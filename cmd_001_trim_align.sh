@@ -18,12 +18,12 @@ module load minimap2 samtools
 # define variable locations
 TRIMMOMATIC=/opt/linux/centos/7.x/x86_64/pkgs/trimmomatic/0.36/trimmomatic.jar
 ADAPTERDIR=/rhome/cfisc004/software/Trimmomatic-0.36/adapters
-INDEX=/rhome/dkoenig/shared/GENOMES/NEW_BARLEY/GENOME_SPLIT/barley_split_reference.fa
+INDEX=/rhome/jmarz001/shared/GENOMES/BARLEY/2019_Release_Morex_vers2/Barley_Morex_V2_pseudomolecules.fasta
 
 # set directories
 PROJECT_DIR=/rhome/jmarz001/bigdata/CCII_BOZ
 SEQS=${PROJECT_DIR}/args/raw_fqs
-TRIMMED=${PROJECT_DIR}/data/trim_fq
+TRIMMED=${PROJECT_DIR}/data/trim_fqs
 BAMS=${PROJECT_DIR}/data/bams
 
 # create data/file directory structure
@@ -36,20 +36,21 @@ FILE_1=$(head -n $SLURM_ARRAY_TASK_ID $SEQS | tail -n 1 | cut -f1)
 FILE_2=$(head -n $SLURM_ARRAY_TASK_ID $SEQS | tail -n 1 | cut -f2)
 sample_name=$(head -n ${SLURM_ARRAY_TASK_ID} $FILE_LIST | tail -n1 | cut -f3 | cut -d_ -f1)
 run_name=$(head -n ${SLURM_ARRAY_TASK_ID} $FILE_LIST | tail -n1 | cut -f3 | cut -d_ -f3)
+sample_barcode=$(head -n ${SLURM_ARRAY_TASK_ID} $FILE_LIST | tail -n1 | cut -f4)
 # rhome/jmarz001/shared/SEQ_RUNS/10_8_2018/FASTQ/250_S229_L003_R1_001.fastq       rhome/jmarz001/shared/SEQ_RUNS/10_8_2018/FASTQ/250_S229_L003_R2_001.fastq       250_S229_L003_001       ACAGTG  Novaseq
+# sample_name = 250
+# run_name = L003
 
 # Quality/Adapter trimming
 java -jar $TRIMMOMATIC PE -threads 10 \
 $FILE_1 $FILE_2 \
 $TRIMMED/${sample_name}_${run_name}_1.fq.gz $TRIMMED/${sample_name}_${run_name}_1.un.fq.gz \
-$TRIMMED/${sample_name}_${run_name}_1.fq.gz $TRIMMED/${sample_name}_${run_name}_1.un.fq.gz \
+$TRIMMED/${sample_name}_${run_name}_2.fq.gz $TRIMMED/${sample_name}_${run_name}_2.un.fq.gz \
 ILLUMINACLIP:"$ADAPTERDIR"/PE_all.fa:2:30:10 \
 SLIDINGWINDOW:4:20 MINLEN:75
 
 
-
-
-minimap2 -t 10 -ax sr ~/shared/GENOMES/NEW_BARLEY/2019_Release_Morex_vers2/Barley.mmi -R "@RG\tID:bar_samp_${SLURM_ARRAY_TASK_ID}\tPL:illumina\tSM:${sample_name}\tLB:${sample_name}" ${wkdir}/OUTPUT/TRIM_FASTQS/${sample_name}${run_name}_1.fq.gz ${wkdir}/OUTPUT/TRIM_FASTQS/${sample_name}${run_name}_2.fq.gz > ${wkdir}/OUTPUT/BAM/${sample_name}${run_name}.sam
+minimap2 -t 10 -ax sr /rhome/jmarz001/shared/GENOMES/BARLEY/2019_Release_Morex_vers2/Barley.mmi -R "@RG\tID:${sample_barcode}_${sample_name}_${SLURM_ARRAY_TASK_ID}\tPL:illumina\tSM:${sample_name}\tLB:${sample_name}" $TRIMMED/${sample_name}_${run_name}_1.fq.gz $TRIMMED/${sample_name}_${run_name}_2.fq.gz > $BAMS/${sample_name}_${run_name}.sam
 
 samtools view -b -T ~/shared/GENOMES/NEW_BARLEY/2019_Release_Morex_vers2/Barley_Morex_V2_pseudomolecules.fasta ${wkdir}/OUTPUT/BAM/${sample_name}${run_name}.sam | samtools sort -@ 20 > ${wkdir}/OUTPUT/BAM/${sample_name}${run_name}.bam
 samtools index -c ${wkdir}/OUTPUT/BAM/${sample_name}${run_name}.bam
