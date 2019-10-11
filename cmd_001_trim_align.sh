@@ -2,13 +2,13 @@
 
 #SBATCH --ntasks=8
 #SBATCH --mem=20G
-#SBATCH --time=168:00:00s
+#SBATCH --time=168:00:00
 #SBATCH --job-name='trim+align'
 #SBATCH --output=/rhome/jmarz001/bigdata/CCII_BOZ/scripts/cmd_001_trim_align.stdout
 #SBATCH -p koeniglab
 #SBATCH --array=1-4
 
-# general pattern for using trimmomatic on the cluster
+# general pattern for using trimmomatic
 ###java -jar <path to trimmomatic jar> SE/PE [-threads <threads>] [-phred33/64] [-trimlog <log file>] <input1> <input2> <paired output 1> <unpaired output 1> <paired output 2> <unpaired output 2> <step 1>...
 
 # load modules
@@ -37,7 +37,7 @@ FILE_2=$(head -n $SLURM_ARRAY_TASK_ID $SEQS | tail -n 1 | cut -f2)
 sample_name=$(head -n ${SLURM_ARRAY_TASK_ID} $FILE_LIST | tail -n1 | cut -f3 | cut -d_ -f1)
 run_name=$(head -n ${SLURM_ARRAY_TASK_ID} $FILE_LIST | tail -n1 | cut -f3 | cut -d_ -f3)
 sample_barcode=$(head -n ${SLURM_ARRAY_TASK_ID} $FILE_LIST | tail -n1 | cut -f4)
-# rhome/jmarz001/shared/SEQ_RUNS/10_8_2018/FASTQ/250_S229_L003_R1_001.fastq       rhome/jmarz001/shared/SEQ_RUNS/10_8_2018/FASTQ/250_S229_L003_R2_001.fastq       250_S229_L003_001       ACAGTG  Novaseq
+# /rhome/jmarz001/shared/SEQ_RUNS/10_8_2018/FASTQ/250_S229_L003_R1_001.fastq.gz       /rhome/jmarz001/shared/SEQ_RUNS/10_8_2018/FASTQ/250_S229_L003_R2_001.fastq.gz       250_S229_L003_001       ACAGTG  Novaseq
 # sample_name = 250
 # run_name = L003
 
