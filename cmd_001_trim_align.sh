@@ -34,9 +34,9 @@ mkdir $BAMS
 # get filenames from list
 FILE_1=$(head -n $SLURM_ARRAY_TASK_ID $SEQS | tail -n 1 | cut -f1)
 FILE_2=$(head -n $SLURM_ARRAY_TASK_ID $SEQS | tail -n 1 | cut -f2)
-sample_name=$(head -n ${SLURM_ARRAY_TASK_ID} $FILE_LIST | tail -n1 | cut -f3 | cut -d_ -f1)
-run_name=$(head -n ${SLURM_ARRAY_TASK_ID} $FILE_LIST | tail -n1 | cut -f3 | cut -d_ -f3)
-sample_barcode=$(head -n ${SLURM_ARRAY_TASK_ID} $FILE_LIST | tail -n1 | cut -f4)
+sample_name=$(head -n ${SLURM_ARRAY_TASK_ID} $SEQS | tail -n 1 | cut -f3 | cut -d_ -f1)
+run_name=$(head -n ${SLURM_ARRAY_TASK_ID} $SEQS | tail -n 1 | cut -f3 | cut -d_ -f3)
+sample_barcode=$(head -n ${SLURM_ARRAY_TASK_ID} $SEQS | tail -n1 | cut -f4)
 # /rhome/jmarz001/shared/SEQ_RUNS/10_8_2018/FASTQ/250_S229_L003_R1_001.fastq.gz       /rhome/jmarz001/shared/SEQ_RUNS/10_8_2018/FASTQ/250_S229_L003_R2_001.fastq.gz       250_S229_L003_001       ACAGTG  Novaseq
 # sample_name = 250
 # run_name = L003
