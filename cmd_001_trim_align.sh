@@ -6,7 +6,7 @@
 #SBATCH --job-name='trim+align'
 #SBATCH --output=/rhome/jmarz001/bigdata/CCII_BOZ/scripts/cmd_001_trim_align.stdout
 #SBATCH -p koeniglab
-#SBATCH --array=1-4%4
+#SBATCH --array=1-4
 
 # general pattern for using trimmomatic on the cluster
 ###java -jar <path to trimmomatic jar> SE/PE [-threads <threads>] [-phred33/64] [-trimlog <log file>] <input1> <input2> <paired output 1> <unpaired output 1> <paired output 2> <unpaired output 2> <step 1>...
@@ -49,25 +49,13 @@ $TRIMMED/${sample_name}_${run_name}_2.fq.gz $TRIMMED/${sample_name}_${run_name}_
 ILLUMINACLIP:"$ADAPTERDIR"/PE_all.fa:2:30:10 \
 SLIDINGWINDOW:4:20 MINLEN:75
 
-
+# Map to reference
 minimap2 -t 10 -ax sr /rhome/jmarz001/shared/GENOMES/BARLEY/2019_Release_Morex_vers2/Barley.mmi -R "@RG\tID:${sample_barcode}_${sample_name}_${SLURM_ARRAY_TASK_ID}\tPL:illumina\tSM:${sample_name}\tLB:${sample_name}" $TRIMMED/${sample_name}_${run_name}_1.fq.gz $TRIMMED/${sample_name}_${run_name}_2.fq.gz > $BAMS/${sample_name}_${run_name}.sam
 
-samtools view -b -T ~/shared/GENOMES/NEW_BARLEY/2019_Release_Morex_vers2/Barley_Morex_V2_pseudomolecules.fasta ${wkdir}/OUTPUT/BAM/${sample_name}${run_name}.sam | samtools sort -@ 20 > ${wkdir}/OUTPUT/BAM/${sample_name}${run_name}.bam
-samtools index -c ${wkdir}/OUTPUT/BAM/${sample_name}${run_name}.bam
+# Get mapping stats
+mkdir $BAMS/mappingstats/
+samtools flagstat $BAMS/${sample_name}_${run_name}.sam > $BAMS/mappingstats/${sample_name}_mapstats.txt
 
-
-# mapping stats
-mkdir $RES/mappingstats/
-samtools flagstat $RES/"$SAMPLE".sam > $RES/mappingstats/"$SAMPLE"_mapstats.txt
-
-# sam to sorted bam and index long bams with csi file
-samtools view -bS $RES/"$SAMPLE".sam | samtools sort -o $RES/"$SAMPLE".bam
-rm *.sam
-samtools index -c $RES/"$SAMPLE".bam
-
-# extract unmapped reads
-mkdir $RES/unmapped
-samtools view -f4 -b $RES/"$SAMPLE".bam > $RES/"$SAMPLE".unmapped.bam
-# export unmapped reads from original reads
-bedtools bamtofastq -i $RES/"$SAMPLE".unmapped.bam -fq $RES/"$SAMPLE".unmapped.fq
-mv *unmapped* unmapped/
+# Convert sam to sorted bam and index bams with csi
+samtools view -b -T $INDEX $BAMS/${sample_name}_${run_name}.sam | samtools sort -@ 20 > $BAMS/${sample_name}_${run_name}.bam
+samtools index -c $BAMS/${sample_name}_${run_name}.bam
