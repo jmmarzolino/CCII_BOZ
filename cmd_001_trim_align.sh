@@ -53,8 +53,9 @@ SLIDINGWINDOW:4:20 MINLEN:75
 minimap2 -t 10 -ax sr /rhome/jmarz001/shared/GENOMES/BARLEY/2019_Release_Morex_vers2/Barley.mmi -R "@RG\tID:${sample_barcode}_${sample_name}_${SLURM_ARRAY_TASK_ID}\tPL:illumina\tSM:${sample_name}\tLB:${sample_name}" $TRIMMED/${sample_name}_${run_name}_1.fq.gz $TRIMMED/${sample_name}_${run_name}_2.fq.gz > $BAMS/${sample_name}_${run_name}.sam
 
 # Get mapping stats
-mkdir $BAMS/mappingstats/
-samtools flagstat $BAMS/${sample_name}_${run_name}.sam > $BAMS/mappingstats/${sample_name}_mapstats.txt
+# this didn't work and I'm not yet sure why
+#mkdir $BAMS/mappingstats/
+#samtools flagstat $BAMS/${sample_name}_${run_name}.sam > $BAMS/mappingstats/${sample_name}_mapstats.txt
 
 # Convert sam to sorted bam and index bams with csi
 samtools view -b -T $INDEX $BAMS/${sample_name}_${run_name}.sam | samtools sort -@ 20 > $BAMS/${sample_name}_${run_name}.bam
