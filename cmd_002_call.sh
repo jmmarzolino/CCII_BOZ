@@ -19,8 +19,10 @@ INDEX=/rhome/jmarz001/shared/GENOMES/BARLEY/2019_Release_Morex_vers2/Barley_More
 # set directories
 BAMS=$PROJECT_DIR/data/bams
 SNPS=$PROJECT_DIR/data/calls
+FILT=$SNPS/filter
 # create data/file directory structure
 mkdir $SNPS
+mkdir $FILT
 
 SEQS=$PROJECT_DIR/args/bam_files
 cd $BAMS ; ls *.bam > $SEQS
@@ -31,3 +33,6 @@ sample_name=$(basename "$FILE" | cut -d. -f1)
 
 #freebayes -f [reference] [infiles.bam] > [outfiles.vcf]
 freebayes -k -f $INDEX $BAMS/$FILE > $SNPS/${sample_name}_rawsnps.vcf
+
+# get the stats you need!
+bcftools stats $SNPS/${sample_name}_rawsnps.vcf > $FILT/${sample_name}.stats
