@@ -12,7 +12,7 @@
 PROJECT_DIR=/rhome/jmarz001/bigdata/CCII_BOZ
 
 # load modules
-module load freebayes/1.2.0
+module load freebayes/1.2.0 bcftools/1.8
 # define variable locations
 INDEX=/rhome/jmarz001/shared/GENOMES/BARLEY/2019_Release_Morex_vers2/Barley_Morex_V2_pseudomolecules.fasta
 
