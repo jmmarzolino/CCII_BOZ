@@ -7,7 +7,7 @@ import pysamstats
 #
 def getpos(inchr,inpos,inA1,inA2):
     i=0
-    for rec in pysamstats.stat_variation_strand(samfile, chrom=inchr, start=inpos-1, end=inpos, truncate=True, fafile="/rhome/dkoenig/shared/GENOMES/NEW_BARLEY/2019_Release_Morex_vers2/Barley_Morex_V2_pseudomolecules.fasta"):
+    for rec in pysamstats.stat_variation_strand(samfile, chrom=inchr, start=inpos-1, end=inpos, truncate=True, fafile="/rhome/jmarz001/shared/GENOMES/BARLEY/2019_Release_Morex_vers2/Barley_Morex_V2_pseudomolecules.fasta"):
         i+=1
         #return rec['chrom'], rec['pos']+1, rec["A_fwd"], rec["T_fwd"], rec["G_fwd"], rec["C_fwd"], rec["A_rev"], rec["T_rev"], rec["G_rev"], rec["C_rev"]
         if rec[inA1]>0 and rec[inA2]>0:

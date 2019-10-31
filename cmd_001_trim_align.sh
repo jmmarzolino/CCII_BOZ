@@ -13,7 +13,7 @@
 
 # load modules
 module load trimmomatic/0.36
-module load minimap2 samtools
+module load minimap2/2.17 samtools/1.9
 
 # define variable locations
 TRIMMOMATIC=/opt/linux/centos/7.x/x86_64/pkgs/trimmomatic/0.36/trimmomatic.jar
