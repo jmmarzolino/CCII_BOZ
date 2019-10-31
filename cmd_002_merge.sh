@@ -11,12 +11,17 @@
 # load modules
 module load samtools/1.9
 
-cd ~/bigdata/BARLEY_CCII_POOLSEQ_WGS/DATA/OUTPUT/BAM
-outfile=`head -n ${SLURM_ARRAY_TASK_ID} ../../INPUT/mergelist.txt | cut -d" " -f1  | tail -n1`
-infile1=`head -n ${SLURM_ARRAY_TASK_ID} ../../INPUT/mergelist.txt | cut -d" " -f2  | tail -n1`
-infile2=`head -n ${SLURM_ARRAY_TASK_ID} ../../INPUT/mergelist.txt | cut -d" " -f3  | tail -n1`
-#infile3=`head -n ${SLURM_ARRAY_TASK_ID} ../../INPUT/mergelist.txt | cut -d" " -f4  | tail -n1`
-#infile4=`head -n ${SLURM_ARRAY_TASK_ID} ../../INPUT/mergelist.txt | cut -d" " -f5  | tail -n1`
+# set directories
+PROJECT_DIR=/rhome/jmarz001/bigdata/CCII_BOZ
+SEQS=${PROJECT_DIR}/args/merge_bams
+BAMS=${PROJECT_DIR}/data/bams
+cd $BAMS
 
-samtools merge -@10 $outfile $infile1 $infile2 $infile3 $infile4
-samtools index -c $outfile
+# get filenames from list
+MERGED_FILE=`head -n ${SLURM_ARRAY_TASK_ID} $SEQS | cut -f3  | tail -n1`
+FILE_1=`head -n ${SLURM_ARRAY_TASK_ID} $SEQS | cut -f1  | tail -n1`
+FILE_2=`head -n ${SLURM_ARRAY_TASK_ID} $SEQS | cut -f2  | tail -n1`
+
+# merge files and index
+samtools merge -@10 $MERGED_FILE $FILE_1 $FILE_2
+samtools index -c $MERGED_FILE
