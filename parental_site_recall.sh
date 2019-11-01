@@ -11,6 +11,7 @@
 # load modules
 module load bcftools/1.9
 module load samtools/1.9
+source activate pyenv
 
 # set directories
 PROJECT_DIR=/rhome/jmarz001/bigdata/CCII_BOZ
