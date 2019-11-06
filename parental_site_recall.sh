@@ -31,7 +31,7 @@ SITES_FILE=/rhome/dkoenig/bigdata/BARLEY_CCII_POOLSEQ_WGS/DATA/INPUT/RECALL_FILT
 FILE=`head -n ${SLURM_ARRAY_TASK_ID} $SEQS | tail -n1 | cut -f3`
 NAME=`basename $FILE | cut -d_ -f1`
 
-python $PROJECT_DIR/scripts/extractsite_counts.py $FILE $STATS_FILE > $BAMS/call_variants/${NAME}.calls
+python $PROJECT_DIR/scripts/extractsite_counts.py $FILE $SITES_FILE > $BAMS/call_variants/${NAME}.calls
 
 
 #cd ~/bigdata/BARLEY_CCII_POOLSEQ_WGS/DATA/OUTPUT/BAM
