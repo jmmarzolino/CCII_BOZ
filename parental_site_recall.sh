@@ -2,7 +2,7 @@
 
 #SBATCH --ntasks=10
 #SBATCH --mem-per-cpu=1G
-#SBATCH --time=50:00:00
+#SBATCH --time=9-00:00:00
 #SBATCH --job-name="recall"
 #SBATCH --output=/rhome/jmarz001/bigdata/CCII_BOZ/scripts/parental_site_recall.stdout
 #SBATCH -p batch
