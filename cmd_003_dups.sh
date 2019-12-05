@@ -6,7 +6,7 @@
 #SBATCH --job-name="dups"
 #SBATCH --time=9-00:00:00
 #SBATCH -p koeniglab
-#SBATCH --array=1-8
+#SBATCH --array=1-5
 
 # set directories
 PROJECT_DIR=/rhome/jmarz001/bigdata/CCII_BOZ
