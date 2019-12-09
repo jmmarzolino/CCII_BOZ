@@ -20,7 +20,6 @@ SEQS=${PROJECT_DIR}/args/coverage_bams.txt
 FILE=$(head -n $SLURM_ARRAY_TASK_ID $SEQS | tail -n 1 | cut -f1)
 sample_name=$(head -n ${SLURM_ARRAY_TASK_ID} $SEQS | tail -n 1 | cut -f2)
 
-
 samtools view -b -T $INDEX $FILE | samtools sort -@ 10 > $BAMS/${sample_name}_sorted.bam
 samtools index -c $BAMS/${sample_name}_sorted.bam
 
