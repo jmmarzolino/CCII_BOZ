@@ -20,4 +20,4 @@ for (i in fileNames) {
   sample$p <- sample$X3 / (sample$X3+sample$X4)
   sample$q <- 1 - sample$p
 }
-  write.table(sample, file=fileNamesOut[i], quote=F ,sep="\t",row.names=F,col.names=F)
+write.table(sample, file=fileNamesOut[i], quote=F ,sep="\t",row.names=F,col.names=F)
