@@ -1,9 +1,13 @@
 #!/usr/bin/env python
+
+# load programs
 import sys
 import re
 import os
 import scipy.stats as stats
 ######################################################
+
+# define functions to assign major and minor allele, calculate Fst
 def sumac(a1,a2,pc):
     if a1>=a2:
         pc[0]+=int(a1)
@@ -18,6 +22,8 @@ def fst(a1,n1,a2,n2):
     D = N + h1 + h2
     return([N,D])
 ######################################################
+
+# initialize counting variables
 n18 = [0,0]
 n28 = [0,0]
 n58 = [0,0]
@@ -30,6 +36,8 @@ seg28=0
 seg58=0
 segP=0
 #######################################################
+
+# read in allele count file, count the number of segregating sites per generation
 f = open(sys.argv[1])
 while True:
     line = f.readline()
@@ -71,6 +79,7 @@ while True:
 f.close
 win=sys.argv[2].split(":")
 pos=win[1].split("-")
+
 #################################################################
 if NDP18[1]==0:
     NDP18out = 'NA'
