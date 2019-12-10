@@ -10,7 +10,7 @@
 #SBATCH --array=1-8
 
 # load modules
-module load gatk/4.1.1.0
+module load samtools/1.9 gatk/4.1.1.0
 
 # set directories
 PROJECT_DIR=/rhome/jmarz001/bigdata/CCII_BOZ
@@ -23,7 +23,9 @@ INDEX=/rhome/jmarz001/shared/GENOMES/BARLEY/2019_Release_Morex_vers2/Barley_More
 CHR=$PROJECT_DIR/args/gatk_chr
 INTERVAL=$(head -n $SLURM_ARRAY_TASK_ID $CHR | tail -n 1)
 
-for file in $SEQS
+for file in $(cat < $SEQS)
 do
+samtools index -c ${BAMS}/${file}.picard_rmdup.bam
+
 gatk HaplotypeCaller -R $INDEX -I ${BAMS}/${file}.picard_rmdup.bam -L ${INTERVAL} -O $SNPS/${file}_${INTERVAL}.raw.gvcf -ERC GVCF
 done
