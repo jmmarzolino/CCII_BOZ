@@ -1,11 +1,9 @@
 #!/bin/bash -l
 
-#SBATCH --ntasks=5
+#SBATCH --nodes=15
 #SBATCH --mem=200G
-#SBATCH --time=6-00:00:00
 #SBATCH --job-name="vcf"
 #SBATCH --output=/rhome/jmarz001/bigdata/CCII_BOZ/scripts/cmd_004_gvcf.stdout
-#SBATCH --error=/rhome/jmarz001/bigdata/CCII_BOZ/scripts/cmd_004_gvcf.err
 #SBATCH -p highmem
 #SBATCH --array=1-8
 
