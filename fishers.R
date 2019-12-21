@@ -1,5 +1,11 @@
 #!/usr/bin/env Rscript
 
+#SBATCH --ntasks=1
+#SBATCH --mem=70G
+#SBATCH --job-name='fishers'
+#SBATCH --output=/rhome/jmarz001/bigdata/CCII_BOZ/scripts/fishers.stdout
+#SBATCH -p koeniglab
+
 setwd("/bigdata/koeniglab/jmarz001/CCII_BOZ/results")
 library(readr)
 progeny_counts <- read_delim("progeny_counts",
@@ -39,33 +45,38 @@ pairwise_comp <- data.frame(late, early, DB_transition, Davis_earlylate, Boz_ear
 all6pops <- c(parents, F18, F27, F28, F50, F58)
 allprogeny <- c(F18, F27, F28, F50, F58)
 
-for (row in 1:nrow(progeny_counts)) {
-  # take allele counts from each line in turn, convert into a matrix with generations as rows
-  site_counts <- matrix(as.numeric(progeny_counts[row,5:16]),nrow=6,byrow=T)
-  r=12 #number of filled columns in loaded table
-  for (i in 2:ncol(parent_comp)) {
-    parents <- site_counts[1,1:2]
-    progeny <- site_counts[i,1:2]
-    comparison <- matrix(c(parents,progeny), nrow=2, byrow=T)
-    # make significance comparisons between the parental counts and each generation in turn
-    p_value <- fisher.test(comparison,alternative = "two.sided",workspace = 2e8)[1] # conduct fishers on whichever row (generation) and get ref and allele counts (1:2)
-    progeny_counts[row,(r+1)] <- p_value #assign the fishers p-value to be added to the end of the current row in order (r)
-    r=r+1
-  }
-  for (i in 1:ncol(pairwise_comp)){
-    a <- site_counts[pairwise_comp[1,i],1:2]
-    b <- site_counts[pairwise_comp[2,i],1:2]
-    comparison <- matrix(c(a,b), nrow=2, byrow=T)
-    p_value <- fisher.test(comparison,alternative = "two.sided",workspace = 2e8)[1]
+for (j in 1:3570){
+  print(j)
+  end <- j*1000
+  start <- end-999
+  for (row in start:end) {
+    # take allele counts from each line in turn, convert into a matrix with generations as rows
+    site_counts <- matrix(as.numeric(progeny_counts[row,5:16]),nrow=6,byrow=T)
+    r=12 #number of filled columns in loaded table
+    for (i in 2:ncol(parent_comp)) {
+      parents <- site_counts[1,1:2]
+      progeny <- site_counts[i,1:2]
+      comparison <- matrix(c(parents,progeny), nrow=2, byrow=T)
+      # make significance comparisons between the parental counts and each generation in turn
+      p_value <- fisher.test(comparison,alternative = "two.sided",workspace = 2e8)[1] # conduct fishers on whichever row (generation) and get ref and allele counts (1:2)
+      progeny_counts[row,(r+1)] <- p_value #assign the fishers p-value to be added to the end of the current row in order (r)
+      r=r+1
+    }
+    for (i in 1:ncol(pairwise_comp)){
+      a <- site_counts[pairwise_comp[1,i],1:2]
+      b <- site_counts[pairwise_comp[2,i],1:2]
+      comparison <- matrix(c(a,b), nrow=2, byrow=T)
+      p_value <- fisher.test(comparison,alternative = "two.sided",workspace = 2e8)[1]
+      progeny_counts[row,r] <- p_value
+      r=r+1
+    }
+    p_value <- fisher.test(site_counts[allprogeny,1:2],workspace = 2e8,, hybrid=T)[1]
     progeny_counts[row,r] <- p_value
     r=r+1
+
+    p_value <- fisher.test(site_counts[all6pops,1:2],workspace = 2e8, hybrid=T)[1]
+    progeny_counts[row,r] <- p_value
   }
-  p_value <- fisher.test(site_counts[allprogeny,1:2],alternative = "two.sided",workspace = 2e8)[1]
-  progeny_counts[row,r] <- p_value
-  r=r+1
-
-  p_value <- fisher.test(site_counts[all6pops,1:2],alternative = "two.sided",workspace = 2e8)[1]
-  progeny_counts[row,r] <- p_value
+  file_name <- paste("Genome_Counts_Fishers_values", sep="", j)
+  write.table(progeny_counts[start:end,], file=file_name, quote=F ,sep="\t",row.names=F,col.names=F)
 }
-
-write.table(progeny_counts, file="Genome_Counts_Fishers_values", quote=F ,sep="\t",row.names=F,col.names=F)
