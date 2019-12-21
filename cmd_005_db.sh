@@ -2,10 +2,8 @@
 
 #SBATCH --ntasks=5
 #SBATCH --mem=200G
-#SBATCH --time=10-00:00:00
 #SBATCH --job-name="db"
 #SBATCH --output=/rhome/jmarz001/bigdata/CCII_BOZ/scripts/cmd_005_db.stdout
-#SBATCH --error=/rhome/jmarz001/bigdata/CCII_BOZ/scripts/cmd_005_db.err
 #SBATCH -p highmem
 #SBATCH --array=1-8
 

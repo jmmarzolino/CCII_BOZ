@@ -1,11 +1,11 @@
 #!/bin/bash -l
 
-#SBATCH --ntasks=16
-#SBATCH --mem=300G
+#SBATCH --ntasks=2
+#SBATCH --mem=200G
 #SBATCH --output=/rhome/jmarz001/bigdata/CCII_BOZ/scripts/cmd_003_dups1-2.stdout
 #SBATCH --job-name="dups"
 #SBATCH --time=9-00:00:00
-#SBATCH -p highmem
+#SBATCH -p koeniglab
 #SBATCH --array=1-2
 
 module load samtools/1.9
