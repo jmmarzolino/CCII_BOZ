@@ -1,11 +1,12 @@
 #!/bin/bash -l
 
-#SBATCH --nodes=15
+#SBATCH --nodes=1
 #SBATCH --mem=200G
 #SBATCH --job-name="vcf"
 #SBATCH --output=/rhome/jmarz001/bigdata/CCII_BOZ/scripts/cmd_004_gvcf.stdout
 #SBATCH -p highmem
 #SBATCH --array=1-8
+#SBATCH --time=9-00:00:00
 
 # load modules
 module load samtools/1.9 gatk/4.1.1.0
