@@ -22,7 +22,6 @@ F58 <- 6
 
 #compare everything
 all6pops <- c(parents, F18, F27, F28, F50, F58)
-allprogeny <- c(F18, F27, F28, F50, F58)
 
 for (j in 1:3570){
   print(j)
@@ -35,6 +34,6 @@ for (j in 1:3570){
     p_value <- fisher.test(site_counts[all6pops,1:2],workspace = 2e8, hybrid=T)[1]
     progeny_counts[row,17] <- p_value
   }
-  file_name <- paste("Genome_Counts_Fishers_values", sep="", j)
+  file_name <- paste("Genome_Counts_Fishers_values_allpops", sep="", j)
   write.table(progeny_counts[start:end,], file=file_name, quote=F ,sep="\t",row.names=F,col.names=F)
 }

@@ -42,7 +42,7 @@ F27_F50 <- c(F27, F50)
 parent_comp <- data.frame(parent_F18,parent_F27,parents_F28,parents_F50, parents_F58)
 pairwise_comp <- data.frame(late, early, DB_transition, Davis_earlylate, Boz_earlylate, F18_F28, F28_F58, F27_F50)
 #compare everything
-all6pops <- c(parents, F18, F27, F28, F50, F58)
+#all6pops <- c(parents, F18, F27, F28, F50, F58)
 allprogeny <- c(F18, F27, F28, F50, F58)
 
 for (j in 1:3570){
@@ -72,11 +72,11 @@ for (j in 1:3570){
     }
     p_value <- fisher.test(site_counts[allprogeny,1:2],workspace = 2e8,, hybrid=T)[1]
     progeny_counts[row,r] <- p_value
-    r=r+1
+    #r=r+1
 
-    p_value <- fisher.test(site_counts[all6pops,1:2],workspace = 2e8, hybrid=T)[1]
-    progeny_counts[row,r] <- p_value
+    #p_value <- fisher.test(site_counts[all6pops,1:2],workspace = 2e8, hybrid=T)[1]
+    #progeny_counts[row,r] <- p_value
   }
-  file_name <- paste("Genome_Counts_Fishers_values", sep="", j)
+  file_name <- paste("Fishers_values", sep="", j)
   write.table(progeny_counts[start:end,], file=file_name, quote=F ,sep="\t",row.names=F,col.names=F)
 }
