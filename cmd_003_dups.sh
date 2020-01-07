@@ -1,10 +1,10 @@
 #!/bin/bash -l
 
 #SBATCH --ntasks=2
-#SBATCH --mem=200G
+#SBATCH --mem=30G
 #SBATCH --output=/rhome/jmarz001/bigdata/CCII_BOZ/scripts/cmd_003_dups1-2.stdout
 #SBATCH --job-name="dups"
-#SBATCH --time=9-00:00:00
+#SBATCH --time=3-00:00:00
 #SBATCH -p koeniglab
 #SBATCH --array=1-2
 
@@ -24,5 +24,5 @@ samtools view -b -T $INDEX $FILE | samtools sort -@ 10 > $BAMS/${sample_name}_so
 samtools index -c $BAMS/${sample_name}_sorted.bam
 
 mkdir -pv /scratch/jmarz/picard/
-java -Xmx300g -jar /rhome/jmarz001/picard/build/libs/picard-2.21.3-SNAPSHOT-all.jar MarkDuplicates I=$BAMS/${sample_name}_sorted.bam O=$BAMS/${sample_name}.picard_rmdup.bam M=$BAMS/${sample_name}.metrics.txt REMOVE_DUPLICATES=true TMP_DIR=/scratch/jmarz/picard/
+java -Xmx6g -jar /rhome/jmarz001/picard/build/libs/picard-2.21.3-SNAPSHOT-all.jar MarkDuplicates I=$BAMS/${sample_name}_sorted.bam O=$BAMS/${sample_name}.picard_rmdup.bam M=$BAMS/${sample_name}.metrics.txt REMOVE_DUPLICATES=true TMP_DIR=/scratch/jmarz/picard/
 rmdir -r /scratch/jmarz/picard/

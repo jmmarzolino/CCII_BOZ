@@ -1,4 +1,5 @@
 #!/bin/bash -l
+
 #SBATCH --mem=5G
 #SBATCH --time=02:00:00
 #SBATCH --array=1-87%87
