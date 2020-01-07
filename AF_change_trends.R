@@ -13,6 +13,23 @@ all_freqs_sub <- read_delim("all_freqs_sub",
     "\t", escape_double = FALSE, col_names = FALSE,
     trim_ws = TRUE)
 
+# first, try to burn out ggplot by plotting the dotplots for every genome position
+
+
+# subset the data to include only the position & allele frequencies from th top one percent of p-values
+
+
+# get allele frequencies from the subset
+
+
+
+library(readr)
+all_freqs_sub <- read_delim("all_freqs_sub", "\t", escape_double = FALSE, col_names = FALSE, trim_ws = TRUE)
+
+all_freqs_sub$X9 <- all_freqs_sub$X4
+
+colnames(all_freqs_sub) <- c("chr","position","parents","F18","F27", "F28", "F50", "F58", "F18")
+
 parent_freq
 F18_freq
 F28_freq
