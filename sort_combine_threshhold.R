@@ -20,13 +20,13 @@ for (p in 1:length(files)){
   sample <- data.frame(files[p])
   newcol <- ncol(sample)+1
 
-  len1 <- sum(sample[,1]==chromosomes[1])
-  len2 <- sum(sample[,1]==chromosomes[2]) + len1
-  len3 <- sum(sample[,1]==chromosomes[3]) + len2
-  len4 <- sum(sample[,1]==chromosomes[4]) + len3
-  len5 <- sum(sample[,1]==chromosomes[5]) + len4
-  len6 <- sum(sample[,1]==chromosomes[6]) + len5
-  len7 <- sum(sample[,1]==chromosomes[7]) + len6
+  len1 <- max(sample[which(sample[,1]==chromosomes[1]),sample[,2]])
+  len2 <- max(sample[which(sample[,1]==chromosomes[2]),sample[,2]]) + len1
+  len3 <- max(sample[which(sample[,1]==chromosomes[3]),sample[,2]]) + len2
+  len4 <- max(sample[which(sample[,1]==chromosomes[4]),sample[,2]]) + len3
+  len5 <- max(sample[which(sample[,1]==chromosomes[5]),sample[,2]]) + len4
+  len6 <- max(sample[which(sample[,1]==chromosomes[6]),sample[,2]]) + len5
+  len7 <- max(sample[which(sample[,1]==chromosomes[7]),sample[,2]]) + len6
 
   for (row in 1:nrow(sample)) {
     chr_val <- gsub("chr(\\w+)H", "\\1", sample[row,1])
@@ -81,15 +81,18 @@ write.table(merge_frame, file="cum_pos_merge_mismatch", quote=F ,sep="\t",row.na
 # then parse by the p-value
 # set the cutoff for p-values at 1%
 cutoff <- quantile(merge_frame$pvalue,0.01)
+
+# if p-value is greater than the cutoff value, replace p-value with NA
 # subset and save the data that is at or below the cutoff
-top_1percent <- merge_frame[which(merge_frame$pvalue <= cutoff),]
+merge_frame[which(merge_frame$pvalue >= cutoff),3] <- NA
+
 # convert p-vales into positive values and make 1's into 0's with a -log transform!
-top_1percent$transform <- -log10(top_1percent$pvalue)
+merge_frame$transform <- -log10(merge_frame$pvalue)
 # save the subsetted table
-write.table(top_1percent, file="top_1percent", quote=F ,sep="\t",row.names=F,col.names=T)
+write.table(merge_frame, file="top_1percent", quote=F ,sep="\t",row.names=F,col.names=T)
 
 # graph the p-values to see whole-genome trends
 library(ggplot2)
-ggplot(data=top_1percent,aes(x=cum_position, y=transform))+geom_point()+xlab("genome position")+ylab("p-value") + theme_minimal() #+ coord_cartesian(ylim = c(0, max(top_1per$X5)))  # c(0, 200)
+ggplot(data=merge_frame,aes(x=cum_position, y=transform,color=chromosome.x))+geom_point()+xlab("genome position")+ylab("p-value") + theme_minimal() #+ coord_cartesian(ylim = c(0, max(top_1per$X5)))  # c(0, 200)
 # save the plot
 ggsave("sort_combine_threshhold_graph.pdf")
