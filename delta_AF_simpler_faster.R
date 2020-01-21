@@ -39,5 +39,5 @@ minor2[,6] <- minor2[,polarized[3]]/(minor2[,11]+ minor2[,12])
 minor2[,7] <- minor2[,polarized[4]]/(minor2[,13]+ minor2[,14])
 minor2[,8] <- minor2[,polarized[5]]/(minor2[,15]+ minor2[,16])
 
-minor_frequencies <- rbind(minor1,minor2)
+minor_frequencies <- rbind(minor1[,1:8],minor2[,1:8])
 write.table(minor_frequencies, file="minor_frequencies", quote=F ,sep="\t",row.names=F,col.names=F)
