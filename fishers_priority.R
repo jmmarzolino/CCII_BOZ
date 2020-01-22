@@ -3,10 +3,10 @@
 #SBATCH --ntasks=1
 #SBATCH --mem=70G
 #SBATCH --job-name='fishers'
+#SBATCH --output=/rhome/jmarz001/bigdata/CCII_BOZ/scripts/fishers_priority_array.stdout
 #SBATCH -p koeniglab
 #SBATCH --time=5-00:00:00
 #SBATCH --array=1-1690‬
-#SBATCH --output=/rhome/jmarz001/bigdata/CCII_BOZ/scripts/fishers_priority_{$SLURM_ARRAY_TASK_ID}.stdout
 
 task_id <- as.numeric(Sys.getenv("SLURM_ARRAY_TASK_ID"))
 
