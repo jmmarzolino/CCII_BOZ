@@ -2,7 +2,7 @@
 
 #SBATCH --ntasks=1
 #SBATCH --mem=60G
-#SBATCH --time=7-00:00:00
+#SBATCH --time=1-00:00:00
 #SBATCH --job-name='AF'
 #SBATCH --output=/rhome/jmarz001/bigdata/CCII_BOZ/scripts/delta_AF.stdout
 #SBATCH -p batch
