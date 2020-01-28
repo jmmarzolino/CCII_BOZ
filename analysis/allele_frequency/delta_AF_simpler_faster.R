@@ -13,7 +13,7 @@ library(readr)
 options(stringsAsFactors = F)
 
 # read in allele count file
-progeny_counts <- read_delim("progeny_counts","\t", col_names = FALSE, trim_ws = TRUE)
+progeny_counts <- read_delim("filtered_counts","\t", col_names = FALSE, trim_ws = TRUE)
 
 # calculate polarized progeny AFs if ref allele is minor
 # copy the rows with minor ref allele to new df

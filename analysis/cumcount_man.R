@@ -3,28 +3,26 @@
 #SBATCH --ntasks=1
 #SBATCH --mem=50G
 #SBATCH --time=2-00:00:00
-#SBATCH --job-name='cum-bind'
-#SBATCH --output=/rhome/jmarz001/bigdata/CCII_BOZ/scripts/sort_combine_threshhold.stdout
-#SBATCH -p koeniglab
+#SBATCH --job-name='cum-man'
+#SBATCH --output=/rhome/jmarz001/bigdata/CCII_BOZ/scripts/cumulative.stdout
+#SBATCH -p short
 
 setwd("/bigdata/koeniglab/jmarz001/CCII_BOZ/results")
 library(readr)
 library(pacman)
 p_load(ggplot2, dplyr, tidyr, data.table)
 options(stringsAsFactors = F)
-pvals <- read_delim("pvals","\t", col_names = FALSE, trim_ws = TRUE)
+df<-fread("Fisherscumpos")
+OutName <- "Fishers"
 
-# Manhattan
-# Bonferroni threshold
-threshold <- 0.05/nrow(df)
 # parse locus
+OutName1<-paste0(OutName, "cumpos")
 names(df)[1]<-"CHR"
+names(df)[2]<-"POS"
+names(df)[17]<-"PVAL"
 
-# following code adapted from:
-# https://www.r-graph-gallery.com/wp-content/uploads/2018/02/Manhattan_plot_in_R.html
 # format for plotting
-df$BP<-as.numeric(as.character(df[2]))
-
+df$BP<-as.numeric(df$POS)
 result <- df %>%
   # Compute chromosome size
   group_by(CHR) %>%
@@ -38,16 +36,18 @@ result <- df %>%
   arrange(CHR, BP) %>%
   mutate(BPcum=BP+tot)
 
-result<-result %>% filter(-log10(p_lrt)>2)
+
+write.table(result, file=OutName1, quote=F ,sep="\t",row.names=F,col.names=F)
+
+result<-result %>% filter(-log10(result$PVAL)>2)
 
 axisdf = result %>% group_by(CHR) %>% summarize(center=( max(BPcum) + min(BPcum) ) / 2 )
 
 # Manhattan plot
-g<-ggplot(result, aes(x=BPcum, y=-log10(p_lrt))) +
+g<-ggplot(result, aes(x=BPcum, y=-log10(PVAL))) +
 
     # Show all points
     geom_point(aes(color=as.factor(CHR)), alpha=0.5, size=1.3) +
-    geom_hline(aes(yintercept=-log10(threshold)), color = "lightslateblue", linetype="dashed", alpha=0.7) +
     scale_color_manual(values = rep(c("black", "grey"), 22 )) +
 
     # custom X axis:
@@ -62,7 +62,7 @@ g<-ggplot(result, aes(x=BPcum, y=-log10(p_lrt))) +
       panel.grid.minor.x = element_blank(),
       text=element_text(size=16)) +
     xlab("Chromosome") +
-    ylab(expression(-log[10](italic(p))))
+    ylab("-log10(p-value)")
 
-OutName1<-paste0(OutName, "_manhattan.jpeg")
-ggsave(OutName1, g, width=10, height=5, units="in")
+OutName2<-paste0(OutName, "_manhattan.jpeg")
+ggsave(OutName2, g, width=10, height=5, units="in")
