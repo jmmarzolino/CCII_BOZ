@@ -4,9 +4,11 @@
 #SBATCH --mem=50G
 #SBATCH --time=01:00:00
 #SBATCH --job-name='AF_genome'
-#SBATCH --output=AF_genome.stdout
+#SBATCH --output=/bigdata/koeniglab/jmarz001/CCII_BOZ/results/AF_genome.stdout
 #SBATCH -p short
 
+
+setwd("/bigdata/koeniglab/jmarz001/CCII_BOZ/results")
 options(stringsAsFactors = F)
 library(readr)
 library(pacman)
