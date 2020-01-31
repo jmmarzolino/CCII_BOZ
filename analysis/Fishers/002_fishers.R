@@ -9,8 +9,7 @@
 setwd("/bigdata/koeniglab/jmarz001/CCII_BOZ/results")
 library(readr)
 progeny_counts <- read_delim("progeny_counts",
-    "\t", escape_double = FALSE, col_names = FALSE,
-    trim_ws = TRUE)
+    "\t", escape_double = FALSE, col_names = FALSE,trim_ws = TRUE)
 
 # define rows in the matrix to grab for pairwise (and bigger) comparisons
 parents <- 1
