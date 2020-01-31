@@ -4,7 +4,7 @@
 #SBATCH --mem=25G
 #SBATCH --time=02:00:00
 #SBATCH --job-name='AFS'
-#SBATCH --output=AFS.stdout
+#SBATCH --output=/bigdata/koeniglab/jmarz001/CCII_BOZ/results/AFS.stdout
 #SBATCH -p short
 
 setwd("/bigdata/koeniglab/jmarz001/CCII_BOZ/results")
@@ -17,6 +17,8 @@ df <- read_delim("minor_frequencies","\t", col_names = FALSE, trim_ws = TRUE)
 generation <- c("F1", "F18", "F27","F28", "F50","F58")
 binlist <- c(5,10,15, 20, 30, 40, 50)
 
+# save all the figures to corresponding folder
+setwd("/bigdata/koeniglab/jmarz001/CCII_BOZ/results/figures")
 j=1
 xlab <- list(paste(generation[j], "Allele Frequency Spectrum", sep=" "))
 for (m in binlist) {

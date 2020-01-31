@@ -41,6 +41,8 @@ result <- df %>%
 
 axisresult = result %>% group_by(CHR) %>% summarize(center=( max(BPcum) + min(BPcum) ) / 2 )
 
+# save all the figures to corresponding folder
+setwd("/bigdata/koeniglab/jmarz001/CCII_BOZ/results/figures")
 for (x in 3:8){
   OutName <- paste0("AF_genome",col_names[x])
   names(result)[x]<-"Y"
