@@ -3,11 +3,12 @@
 #SBATCH --ntasks=1
 #SBATCH --mem=50G
 #SBATCH --time=01:00:00
-#SBATCH --job-name='man plot'
-#SBATCH --output=AF_genome_wide_plot.stdout
+#SBATCH --job-name='AF_genome'
+#SBATCH --output=AF_genome.stdout
 #SBATCH -p short
 
 options(stringsAsFactors = F)
+library(readr)
 library(pacman)
 p_load(ggplot2, dplyr, tidyr, data.table)
 
@@ -15,7 +16,7 @@ p_load(ggplot2, dplyr, tidyr, data.table)
 FileName="minor_frequencies"
 
 # import data
-df<-fread(FileName)
+df <- read_delim(FileName,"\t", col_names = FALSE, trim_ws = TRUE)
 
 # parse locus
 names(df)[1]<-"CHR"
@@ -38,11 +39,12 @@ result <- df %>%
   arrange(CHR, BP) %>%
   mutate(BPcum=BP+tot)
 
+axisresult = result %>% group_by(CHR) %>% summarize(center=( max(BPcum) + min(BPcum) ) / 2 )
+
 for (x in 3:8){
-  OutName <- paste0("AF_genome_wide",x)
+  OutName <- paste0("AF_genome",col_names[x])
   names(result)[x]<-"Y"
   xlab <- col_names[x]
-  axisresult = result %>% group_by(CHR) %>% summarize(center=( max(BPcum) + min(BPcum) ) / 2 )
 
   g <- ggplot(result, aes(x=BPcum, y=Y)) +
   # Show all points
@@ -60,7 +62,7 @@ for (x in 3:8){
         text=element_text(size=16)) +
   xlab(xlab) +
   ylab("Allele Frequency")+
-  ylim(NA,0.6)
+  ylim(0,1)
 
   OutName2<-paste0(OutName, "_manhattan.jpeg")
   ggsave(OutName2, g, width=8, height=5, units="in")
