@@ -17,7 +17,7 @@ Boz50_binom_ref_count <- rbinom(n=rows,size=Dav_mean_counts,prob=Boz50_ref_prob)
 
 # add the new parental ref counts to the out df
 binom_counts[,3] <- parent_binom_ref_count
-# use the ref counts and Dav mean counts to create the ref counts
+# use the ref counts and Dav mean counts to create the alt  counts
 binom_counts[,4] <- (Dav_mean_counts)-(parent_binom_ref_count)
 # copy over Davis counts F18
 binom_counts[,5:6] <- df[,7:8]
