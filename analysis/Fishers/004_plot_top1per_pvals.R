@@ -2,10 +2,10 @@
 
 #SBATCH --ntasks=1
 #SBATCH --mem=70G
-#SBATCH --time=7-00:00:00
+#SBATCH --time=01:00:00
 #SBATCH --job-name='subset and graph'
 #SBATCH --output=plot_top1per_pvals.stdout
-#SBATCH -p batch
+#SBATCH -p koeniglab
 
 setwd("/bigdata/koeniglab/jmarz001/CCII_BOZ/results")
 library(readr)
@@ -13,10 +13,10 @@ library(pacman)
 p_load(ggplot2, dplyr, tidyr, data.table)
 
 # load table
-df <- read_delim("pvals", "\t", escape_double = FALSE, col_names = FALSE, trim_ws = TRUE)
-OutName <- "fishers_top1per"
+df <- read_delim("pvals_trim", "\t", escape_double = FALSE, col_names = FALSE, trim_ws = TRUE)
+OutName <- "fishers_top1per_binomial"
 # set the cutoff for p-values at 1%
-cutoff <- quantile(df$X3,0.01)
+cutoff <- quantile(df$X3,0.01,na.rm=T)
 # subset and save the data that is at or below the cutoff
 top_1per <- df[which(df$X3 <= cutoff),]
 # convert p-vales into positive values with a -log transform!
