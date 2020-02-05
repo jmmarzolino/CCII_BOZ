@@ -12,12 +12,18 @@ library(readr)
 library(ggplot2)
 options(stringsAsFactors = F)
 
-df <- read_delim("Fst","\t", col_names = T, trim_ws = TRUE)
-list <- c("F18-to-parent","F27-to-parent","F28-to-parent","F50-to-parent","F58-to-parent")
-binlist <- c(5,10,15, 20, 30, 40, 50)
+df <- read_delim("Fst_cumpos","\t", col_names = T, trim_ws = TRUE)
+df <- df[,3:7]
+list <- colnames(df)
+binlist <- c(10,15,20,25)
 
 j=1
 xlab <- list(paste(list[j], "FST", sep=" "))
+
+df2$F18 <- as.double(df2$F18)
+df2$F18 <- round(as.double(df2$F18),digits=3)
+ggplot(df2, aes(F18)) + geom_histogram(bins=m)+ theme_minimal()+xlab(xlab)
+
 for (m in binlist) {
   outname = paste(paste(paste(list[j], "FST",sep="_"),m,sep="_"),"bins.png",sep="")
   col <- list[j]
