@@ -5,8 +5,8 @@
 #SBATCH --time=9-00:00:00
 #SBATCH --job-name="recall"
 #SBATCH --output=/rhome/jmarz001/bigdata/CCII_BOZ/scripts/parental_site_recall.stdout
-#SBATCH -p batch
-#SBATCH --array=1-2
+#SBATCH -p koeniglab
+#SBATCH --array=1-6
 
 # load modules
 module load bcftools/1.9
@@ -19,6 +19,8 @@ SEQS=${PROJECT_DIR}/args/merge_bams
 BAMS=${PROJECT_DIR}/data/bams
 cd $BAMS
 mkdir call_variants
+
+/rhome/keelyb/bigdata/CCbarley/CCparents/filtering/CCV.10missing.dp3.DP300.10het.GQ30.recode.vcf
 
 # how the sites were determined in the first place
 #bcftools query -f '%CHROM\t%POS\t%REF\t%ALT\n' ~/bigdata/BARLEY_CCII_PARENTS_WGS/DATA/OUTPUT/FINALCALLS/FILTER_SNPSONLY.vcf > ../../INPUT/RECALL_FILT_NAMES.bed
