@@ -2,7 +2,7 @@
 
 #SBATCH --ntasks=1
 #SBATCH --mem=50G
-#SBATCH --time=2-00:00:00
+#SBATCH --time=02:00:00
 #SBATCH --job-name='cum-man'
 #SBATCH --output=/rhome/jmarz001/bigdata/CCII_BOZ/scripts/cumulative.stdout
 #SBATCH -p short
