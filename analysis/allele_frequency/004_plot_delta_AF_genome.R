@@ -28,7 +28,9 @@ delta_AF_BOZ <- read_delim("delta_AF_BOZ","\t", col_names = T, trim_ws = TRUE)
 ###########################################################################
 
 #bind all the data columns together
-df <- cbind.data.frame(delta_AF_F1toALL,delta_AF_DAVIS[,3:5],delta_AF_BOZ[,3:5])
+#df <- cbind.data.frame(delta_AF_F1toALL,delta_AF_DAVIS[,3:5],delta_AF_BOZ[,3:5])
+#write_delim(df,"delta_AF_all",delim="\t",col_names=T)
+df <- read_delim("delta_AF_all","\t",col_names=T,trim_ws=T)
 # name relevant columns
 names(df)[1]<-"CHR"
 names(df)[2]<-"POS"
@@ -51,7 +53,7 @@ result <- df %>%
 #head(result)
 axisresult = result %>% group_by(CHR) %>% summarize(center=( max(BPcum) + min(BPcum) ) / 2 )
 
-for (x in 3:13){
+for (x in c(3,8,9,11,12)){
   OutName <- paste0(colnames(result)[x],"_deltaAF")
   xlab <- colnames(result)[x]
   names(result)[x]<-"Y"
@@ -86,8 +88,8 @@ for (x in 3:13){
 #Plot magnitude of delta AF (absolute value) across the genome
 ###########################################################################
 # edit data frame to be absolute values
-df <- cbind.data.frame(delta_AF_F1toALL,delta_AF_DAVIS[,3:5],delta_AF_BOZ[,3:5])
-df <- abs(df[,3:ncol(df)])
+df <- read_delim("delta_AF_all",delim="\t",col_names=T)
+df[,3:ncol(df)] <- abs(df[,3:ncol(df)])
 
 df$BP<-as.numeric(df$POS)
 result <- df %>%
