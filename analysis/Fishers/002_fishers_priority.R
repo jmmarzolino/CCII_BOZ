@@ -6,7 +6,7 @@
 #SBATCH --output=fishers_priority.stdout
 #SBATCH -p koeniglab
 #SBATCH --time=5-00:00:00
-#SBATCH --array=1-3
+#SBATCH --array=1-13
 
 task_id <- as.numeric(Sys.getenv("SLURM_ARRAY_TASK_ID"))
 
