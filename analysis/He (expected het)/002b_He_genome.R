@@ -7,29 +7,16 @@
 #SBATCH --output=/rhome/jmarz001/bigdata/CCII_BOZ/scripts/plot_delta_AF_genome.stdout
 #SBATCH -p koeniglab
 
-#Set up environment
 setwd("/bigdata/koeniglab/jmarz001/CCII_BOZ/results")
 library(readr)
-library(pacman)
-p_load(ggplot2, dplyr, tidyr, data.table)
-options(stringsAsFactors = F)
-
-##############################################################################
-#####################Read In Dataset##########################################
-##############################################################################
-#Load in files with change in allele frequencies calculated
-delta_AF_F1toALL <- read_delim("delta_AF_F1toALL","\t", col_names = T, trim_ws = TRUE)
-delta_AF_DAVIS <- read_delim("delta_AF_DAVIS","\t", col_names = T, trim_ws = TRUE)
-delta_AF_BOZ <- read_delim("delta_AF_BOZ","\t", col_names = T, trim_ws = TRUE)
-
+library(ggplot2)
+# load in the He and weighted_He files
+df <- read_delim("all_He", "\t", col_names=T,trim_ws = TRUE)
+gens <- c("F0","F18","F27","F28","F50","F58")
 
 ###########################################################################
-#Plot positive and negative delta AF across the genome
+#Plot He across the genome
 ###########################################################################
-
-#bind all the data columns together
-df <- cbind.data.frame(delta_AF_F1toALL,delta_AF_DAVIS[,3:5],delta_AF_BOZ[,3:5])
-#write_delim(df,"delta_AF_all",delim="\t",col_names=T)
 # name relevant columns
 names(df)[1]<-"CHR"
 names(df)[2]<-"POS"
@@ -52,8 +39,8 @@ result <- df %>%
 #head(result)
 axisresult = result %>% group_by(CHR) %>% summarize(center=( max(BPcum) + min(BPcum) ) / 2 )
 
-for (x in 3:13){
-  OutName <- paste0(colnames(result)[x],"_deltaAF")
+for (x in 3:ncol(df)){
+  OutName <- paste0(colnames(result)[x],"_He")
   xlab <- colnames(result)[x]
   names(result)[x]<-"Y"
 
@@ -75,7 +62,7 @@ for (x in 3:13){
     ylab("Change in Allele Frequency")+
     ylim(-1,1)
 
-  OutName2<-paste0(OutName, "_manhattan.jpeg")
+  OutName2<-paste0(OutName, "_genome.jpeg")
   ggsave(OutName2, g, width=10, height=6, units="in")
 
   trash <- paste0("X",x)
@@ -84,11 +71,10 @@ for (x in 3:13){
 
 
 ###########################################################################
-#Plot magnitude of delta AF (absolute value) across the genome
+#Plot weighted He across the genome
 ###########################################################################
 # edit data frame to be absolute values
-df <- read_delim("delta_AF_all",delim="\t",col_names=T)
-df[,3:ncol(df)] <- abs(df[,3:ncol(df)])
+df <- read_delim("all_weighted_He", "\t", col_names=T,trim_ws = TRUE)
 
 df$BP<-as.numeric(df$POS)
 result <- df %>%
@@ -107,8 +93,8 @@ result <- df %>%
 #head(result)
 axisresult = result %>% group_by(CHR) %>% summarize(center=( max(BPcum) + min(BPcum) ) / 2 )
 
-for (x in 3:13){
-  OutName <- paste0(colnames(result)[x],"_deltaAF_abs")
+for (x in 3:ncol(df)){
+  OutName <- paste0(colnames(result)[x],"_He_weighted")
   xlab <- colnames(result)[x]
   names(result)[x]<-"Y"
 
@@ -127,10 +113,10 @@ for (x in 3:13){
           panel.grid.minor.x = element_blank(),
           text=element_text(size=16)) +
     xlab(xlab) +
-    ylab("Change in Allele Frequency")+
-    ylim(0,1)
+    ylab("Weighted Expected Heterozygosity")+
+    ylim(NA,1)
 
-  OutName2<-paste0(OutName, "_manhattan.jpeg")
+  OutName2<-paste0(OutName, "_genome.jpeg")
   ggsave(OutName2, g, width=10, height=6, units="in")
 
   trash <- paste0("X",x)
