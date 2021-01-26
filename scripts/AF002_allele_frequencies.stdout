@@ -1,0 +1,23 @@
+Parsed with column specification:
+cols(
+  CHR = col_character(),
+  POS = col_double(),
+  `F0 REF` = col_double(),
+  `F0 ALT` = col_double(),
+  `F18 REF` = col_double(),
+  `F18 ALT` = col_double(),
+  `F27 REF` = col_double(),
+  `F27 ALT` = col_double(),
+  `F28 REF` = col_double(),
+  `F28 ALT` = col_double(),
+  `F50 REF` = col_double(),
+  `F50 ALT` = col_double(),
+  `F58 REF` = col_double(),
+  `F58 ALT` = col_double()
+)
+[1] 644
+[1] 9215
+Error in `[<-.data.frame`(`*tmp*`, , 3, value = list(`F0 ALT` = c(0.736842105263158,  : 
+  replacement element 1 has 644 rows, need 9215
+Calls: [<- -> [<-.data.frame
+Execution halted

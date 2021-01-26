@@ -1,0 +1,7 @@
+Parsed with column specification:
+cols(
+  X1 = col_character(),
+  X2 = col_double(),
+  X3 = col_double()
+)
+slurmstepd-i10: error: *** JOB 572799 ON i10 CANCELLED AT 2019-12-27T11:37:00 DUE TO TIME LIMIT ***

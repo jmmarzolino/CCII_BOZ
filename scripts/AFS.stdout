@@ -1,0 +1,60 @@
+Registered S3 methods overwritten by 'ggplot2':
+  method         from 
+  [.quosures     rlang
+  c.quosures     rlang
+  print.quosures rlang
+Parsed with column specification:
+cols(
+  X1 = col_character(),
+  X2 = col_double(),
+  X3 = col_double(),
+  X4 = col_double(),
+  X5 = col_double(),
+  X6 = col_double(),
+  X7 = col_double(),
+  X8 = col_double()
+)
+Warning messages:
+1: Removed 161 rows containing non-finite values (stat_bin). 
+2: Removed 161 rows containing non-finite values (stat_bin). 
+3: Removed 161 rows containing non-finite values (stat_bin). 
+4: Removed 161 rows containing non-finite values (stat_bin). 
+5: Removed 161 rows containing non-finite values (stat_bin). 
+6: Removed 161 rows containing non-finite values (stat_bin). 
+7: Removed 161 rows containing non-finite values (stat_bin). 
+Warning messages:
+1: Removed 13 rows containing non-finite values (stat_bin). 
+2: Removed 1 rows containing missing values (geom_bar). 
+3: Removed 13 rows containing non-finite values (stat_bin). 
+4: Removed 13 rows containing non-finite values (stat_bin). 
+5: Removed 13 rows containing non-finite values (stat_bin). 
+6: Removed 13 rows containing non-finite values (stat_bin). 
+7: Removed 13 rows containing non-finite values (stat_bin). 
+8: Removed 13 rows containing non-finite values (stat_bin). 
+Warning messages:
+1: Removed 434 rows containing non-finite values (stat_bin). 
+2: Removed 434 rows containing non-finite values (stat_bin). 
+3: Removed 434 rows containing non-finite values (stat_bin). 
+4: Removed 434 rows containing non-finite values (stat_bin). 
+5: Removed 434 rows containing non-finite values (stat_bin). 
+6: Removed 434 rows containing non-finite values (stat_bin). 
+7: Removed 434 rows containing non-finite values (stat_bin). 
+Warning messages:
+1: Removed 2 rows containing non-finite values (stat_bin). 
+2: Removed 2 rows containing non-finite values (stat_bin). 
+3: Removed 2 rows containing non-finite values (stat_bin). 
+4: Removed 2 rows containing non-finite values (stat_bin). 
+5: Removed 2 rows containing non-finite values (stat_bin). 
+6: Removed 2 rows containing non-finite values (stat_bin). 
+7: Removed 2 rows containing non-finite values (stat_bin). 
+Warning messages:
+1: Removed 305 rows containing non-finite values (stat_bin). 
+2: Removed 1 rows containing missing values (geom_bar). 
+3: Removed 305 rows containing non-finite values (stat_bin). 
+4: Removed 1 rows containing missing values (geom_bar). 
+5: Removed 305 rows containing non-finite values (stat_bin). 
+6: Removed 1 rows containing missing values (geom_bar). 
+7: Removed 305 rows containing non-finite values (stat_bin). 
+8: Removed 305 rows containing non-finite values (stat_bin). 
+9: Removed 305 rows containing non-finite values (stat_bin). 
+10: Removed 305 rows containing non-finite values (stat_bin). 

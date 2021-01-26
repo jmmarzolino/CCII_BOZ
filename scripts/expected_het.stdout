@@ -1,0 +1,91 @@
+Parsed with column specification:
+cols(
+  CHR = col_character(),
+  POS = col_double(),
+  expected_heterozygosity = col_double(),
+  weighted_ex_heterozygosity = col_double()
+)
+Registered S3 methods overwritten by 'ggplot2':
+  method         from 
+  [.quosures     rlang
+  c.quosures     rlang
+  print.quosures rlang
+Registered S3 methods overwritten by 'ggplot2':
+  method         from 
+  [.quosures     rlang
+  c.quosures     rlang
+  print.quosures rlang
+Registered S3 methods overwritten by 'ggplot2':
+  method         from 
+  [.quosures     rlang
+  c.quosures     rlang
+  print.quosures rlang
+Registered S3 methods overwritten by 'ggplot2':
+  method         from 
+  [.quosures     rlang
+  c.quosures     rlang
+  print.quosures rlang
+Registered S3 methods overwritten by 'ggplot2':
+  method         from 
+  [.quosures     rlang
+  c.quosures     rlang
+  print.quosures rlang
+Parsed with column specification:
+cols(
+  CHR = col_character(),
+  POS = col_double(),
+  expected_heterozygosity = col_double(),
+  weighted_ex_heterozygosity = col_double()
+)
+Parsed with column specification:
+cols(
+  CHR = col_character(),
+  POS = col_double(),
+  expected_heterozygosity = col_double(),
+  weighted_ex_heterozygosity = col_double()
+)
+Parsed with column specification:
+cols(
+  CHR = col_character(),
+  POS = col_double(),
+  expected_heterozygosity = col_double(),
+  weighted_ex_heterozygosity = col_double()
+)
+Parsed with column specification:
+cols(
+  CHR = col_character(),
+  POS = col_double(),
+  expected_heterozygosity = col_double(),
+  weighted_ex_heterozygosity = col_double()
+)
+Parsed with column specification:
+cols(
+  CHR = col_character(),
+  POS = col_double(),
+  expected_heterozygosity = col_double(),
+  weighted_ex_heterozygosity = col_double()
+)
+Error: `device` must be NULL, a string or a function.
+Execution halted
+Error: `device` must be NULL, a string or a function.
+Execution halted
+Error: `device` must be NULL, a string or a function.
+Execution halted
+Error: `device` must be NULL, a string or a function.
+Execution halted
+Error: `device` must be NULL, a string or a function.
+Execution halted
+Error: `device` must be NULL, a string or a function.
+Execution halted
+Error: `device` must be NULL, a string or a function.
+Execution halted
+Error: `device` must be NULL, a string or a function.
+Execution halted
+Error: `device` must be NULL, a string or a function.
+Execution halted
+Error: `device` must be NULL, a string or a function.
+Execution halted
+Error: `device` must be NULL, a string or a function.
+Execution halted
+Error: `device` must be NULL, a string or a function.
+Execution halted

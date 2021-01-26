@@ -1,0 +1,28 @@
+Registered S3 methods overwritten by 'ggplot2':
+  method         from 
+  [.quosures     rlang
+  c.quosures     rlang
+  print.quosures rlang
+Parsed with column specification:
+cols(
+  CHR = col_character(),
+  POS = col_double(),
+  F0 = col_double(),
+  F18 = col_double(),
+  F27 = col_double(),
+  F28 = col_double(),
+  F50 = col_double(),
+  F58 = col_double()
+)
+Parsed with column specification:
+cols(
+  CHR = col_character(),
+  POS = col_double(),
+  F0 = col_double(),
+  F18 = col_double(),
+  F27 = col_double(),
+  F28 = col_double(),
+  F50 = col_double(),
+  F58 = col_double()
+)
+There were 22 warnings (use warnings() to see them)

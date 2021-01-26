@@ -1,0 +1,15 @@
+# Ignore everything
+*
+# specifically ignore anything ending in _df
+*_df
+
+# But not scripts and stdouts
+!.gitignore
+!*.R
+!*.Rmd
+!*.stdout
+!*.sh
+!*.py
+
+# even in subdirectories
+!*/

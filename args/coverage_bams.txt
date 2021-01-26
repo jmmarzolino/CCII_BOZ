@@ -1,0 +1,5 @@
+/rhome/jmarz001/bigdata/CCII_BOZ/data/bams/250_merged.bam	F27
+/rhome/jmarz001/bigdata/CCII_BOZ/data/bams/255_merged.bam	F50
+/rhome/dkoenig/bigdata/BARLEY_CCII_POOLSEQ_WGS/DATA/OUTPUT/BAM/F18.bam	F18
+/rhome/dkoenig/bigdata/BARLEY_CCII_POOLSEQ_WGS/DATA/OUTPUT/BAM/F28.bam	F28
+/rhome/dkoenig/bigdata/BARLEY_CCII_POOLSEQ_WGS/DATA/OUTPUT/BAM/F58.bam	F58

@@ -1,0 +1,29 @@
+Parsed with column specification:
+cols(
+  CHR = col_character(),
+  POS = col_double(),
+  F1toF18 = col_double(),
+  F1toF28 = col_double(),
+  F1toF58 = col_double(),
+  F1toF27 = col_double(),
+  F1toF50 = col_double()
+)
+slurmstepd-i09: error: *** JOB 746194 ON i09 CANCELLED AT 2020-02-05T12:22:42 ***
+Parsed with column specification:
+cols(
+  CHR = col_character(),
+  POS = col_double(),
+  F18toF28 = col_double(),
+  F28toF58 = col_double(),
+  F18toF58 = col_double()
+)
+Parsed with column specification:
+cols(
+  CHR = col_character(),
+  POS = col_double(),
+  F18toF27 = col_double(),
+  F27toF50 = col_double(),
+  F18toF50 = col_double()
+)
+Scale for 'y' is already present. Adding another scale for 'y', which will replace the existing scale.
+slurmstepd-i09: error: *** JOB 746245 ON i09 CANCELLED AT 2020-02-05T12:24:00 ***

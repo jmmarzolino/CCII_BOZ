@@ -1,0 +1,58 @@
+Parsed with column specification:
+cols(
+  X1 = col_character(),
+  X2 = col_double(),
+  X3 = col_double(),
+  X4 = col_double()
+)
+Parsed with column specification:
+cols(
+  X1 = col_character(),
+  X2 = col_double(),
+  X3 = col_double(),
+  X4 = col_double()
+)
+Warning: 1 parsing failure.
+  row col  expected    actual        file
+26815  -- 4 columns 2 columns 'F18.calls'
+
+Parsed with column specification:
+cols(
+  X1 = col_character(),
+  X2 = col_double(),
+  X3 = col_double(),
+  X4 = col_double()
+)
+Parsed with column specification:
+cols(
+  X1 = col_character(),
+  X2 = col_double(),
+  X3 = col_double(),
+  X4 = col_double()
+)
+Warning: 1 parsing failure.
+  row col  expected    actual        file
+26808  -- 4 columns 2 columns 'F28.calls'
+
+Parsed with column specification:
+cols(
+  X1 = col_character(),
+  X2 = col_double(),
+  X3 = col_double(),
+  X4 = col_double()
+)
+Warning: 1 parsing failure.
+  row col  expected    actual        file
+26165  -- 4 columns 1 columns 'F50.calls'
+
+Parsed with column specification:
+cols(
+  X1 = col_character(),
+  X2 = col_double(),
+  X3 = col_double(),
+  X4 = col_double()
+)
+Warning: 1 parsing failure.
+  row col  expected    actual        file
+26900  -- 4 columns 2 columns 'F58.calls'
+

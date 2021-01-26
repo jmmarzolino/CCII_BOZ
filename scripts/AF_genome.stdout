@@ -1,0 +1,23 @@
+Parsed with column specification:
+cols(
+  X1 = col_character(),
+  X2 = col_double(),
+  X3 = col_double(),
+  X4 = col_double(),
+  X5 = col_double(),
+  X6 = col_double(),
+  X7 = col_double(),
+  X8 = col_double()
+)
+Scale for 'y' is already present. Adding another scale for 'y', which will replace the existing scale.
+Scale for 'y' is already present. Adding another scale for 'y', which will replace the existing scale.
+Scale for 'y' is already present. Adding another scale for 'y', which will replace the existing scale.
+Scale for 'y' is already present. Adding another scale for 'y', which will replace the existing scale.
+Scale for 'y' is already present. Adding another scale for 'y', which will replace the existing scale.
+Scale for 'y' is already present. Adding another scale for 'y', which will replace the existing scale.
+Warning messages:
+1: Removed 161 rows containing missing values (geom_point). 
+2: Removed 13 rows containing missing values (geom_point). 
+3: Removed 434 rows containing missing values (geom_point). 
+4: Removed 2 rows containing missing values (geom_point). 
+5: Removed 305 rows containing missing values (geom_point). 

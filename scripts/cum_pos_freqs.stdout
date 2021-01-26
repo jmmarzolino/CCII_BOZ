@@ -1,0 +1,23 @@
+Parsed with column specification:
+cols(
+  X1 = col_character(),
+  X2 = col_double(),
+  X3 = col_double(),
+  X4 = col_double(),
+  X5 = col_double(),
+  X6 = col_double(),
+  X7 = col_double(),
+  X8 = col_double()
+)
+Error: Positive column indexes in `[` must match number of columns:
+* `.data` has 8 columns
+* Position 1 equals 9
+Backtrace:
+    x
+ 1. +-all_freqs[row, 9]
+ 2. +-readr:::`[.spec_tbl_df`(all_freqs, row, 9)
+ 3. +-base::NextMethod(`[`)
+ 4. \-tibble:::`[.tbl_df`(all_freqs, row, 9)
+ 5.   \-tibble:::check_names_df(j, x)
+ 6.     \-tibble:::check_names_df_numeric(j, x)
+Execution halted

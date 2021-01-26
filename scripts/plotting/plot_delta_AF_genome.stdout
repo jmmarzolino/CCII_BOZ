@@ -1,0 +1,19 @@
+Registered S3 methods overwritten by 'ggplot2':
+  method         from 
+  [.quosures     rlang
+  c.quosures     rlang
+  print.quosures rlang
+Parsed with column specification:
+cols(
+  CHR = col_character(),
+  POS = col_double(),
+  F0 = col_double(),
+  F18 = col_double(),
+  F27 = col_double(),
+  F28 = col_double(),
+  F50 = col_double(),
+  F58 = col_double()
+)
+Error in df %>% group_by(CHR) %>% summarise(chr_len = max(BP)) %>% mutate(tot = cumsum(as.numeric(chr_len)) -  : 
+  could not find function "%>%"
+Execution halted

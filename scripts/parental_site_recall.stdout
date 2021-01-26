@@ -1,0 +1,35 @@
+[E::hts_open_format] [E::hts_open_format] Failed to open file /rhome/jmarz001/bigdata/CCII_BOZ/data/bams/F18.bamFailed to open file /rhome/jmarz001/bigdata/CCII_BOZ/data/bams/F27_sorted.bam
+
+Traceback (most recent call last):
+Traceback (most recent call last):
+  File "/rhome/jmarz001/bigdata/CCII_BOZ/scripts/extractsite_counts.py", line 18, in <module>
+  File "/rhome/jmarz001/bigdata/CCII_BOZ/scripts/extractsite_counts.py", line 18, in <module>
+        samfile = pysam.AlignmentFile(sys.argv[1], "rb")
+samfile = pysam.AlignmentFile(sys.argv[1], "rb")
+  File "pysam/libcalignmentfile.pyx", line 741, in pysam.libcalignmentfile.AlignmentFile.__cinit__
+  File "pysam/libcalignmentfile.pyx", line 741, in pysam.libcalignmentfile.AlignmentFile.__cinit__
+  File "pysam/libcalignmentfile.pyx", line 940, in pysam.libcalignmentfile.AlignmentFile._open
+  File "pysam/libcalignmentfile.pyx", line 940, in pysam.libcalignmentfile.AlignmentFile._open
+IOErrorIOError: : [Errno 2] could not open alignment file `/rhome/jmarz001/bigdata/CCII_BOZ/data/bams/F18.bam`: No such file or directory[Errno 2] could not open alignment file `/rhome/jmarz001/bigdata/CCII_BOZ/data/bams/F27_sorted.bam`: No such file or directory
+
+[E::hts_open_format] Failed to open file /rhome/jmarz001/bigdata/CCII_BOZ/data/bams/F58.bam
+Traceback (most recent call last):
+  File "/rhome/jmarz001/bigdata/CCII_BOZ/scripts/extractsite_counts.py", line 18, in <module>
+    samfile = pysam.AlignmentFile(sys.argv[1], "rb")
+  File "pysam/libcalignmentfile.pyx", line 741, in pysam.libcalignmentfile.AlignmentFile.__cinit__
+  File "pysam/libcalignmentfile.pyx", line 940, in pysam.libcalignmentfile.AlignmentFile._open
+IOError: [Errno 2] could not open alignment file `/rhome/jmarz001/bigdata/CCII_BOZ/data/bams/F58.bam`: No such file or directory
+[E::hts_open_format] [E::hts_open_format] Failed to open file /rhome/jmarz001/bigdata/CCII_BOZ/data/bams/F50_sorted.bamFailed to open file /rhome/jmarz001/bigdata/CCII_BOZ/data/bams/F28.bam
+
+Traceback (most recent call last):
+Traceback (most recent call last):
+  File "/rhome/jmarz001/bigdata/CCII_BOZ/scripts/extractsite_counts.py", line 18, in <module>
+  File "/rhome/jmarz001/bigdata/CCII_BOZ/scripts/extractsite_counts.py", line 18, in <module>
+    samfile = pysam.AlignmentFile(sys.argv[1], "rb")
+    samfile = pysam.AlignmentFile(sys.argv[1], "rb")
+  File "pysam/libcalignmentfile.pyx", line 741, in pysam.libcalignmentfile.AlignmentFile.__cinit__
+  File "pysam/libcalignmentfile.pyx", line 741, in pysam.libcalignmentfile.AlignmentFile.__cinit__
+  File "pysam/libcalignmentfile.pyx", line 940, in pysam.libcalignmentfile.AlignmentFile._open
+  File "pysam/libcalignmentfile.pyx", line 940, in pysam.libcalignmentfile.AlignmentFile._open
+IOErrorIOError: : [Errno 2] could not open alignment file `/rhome/jmarz001/bigdata/CCII_BOZ/data/bams/F50_sorted.bam`: No such file or directory[Errno 2] could not open alignment file `/rhome/jmarz001/bigdata/CCII_BOZ/data/bams/F28.bam`: No such file or directory
+
