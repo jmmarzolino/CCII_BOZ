@@ -4,7 +4,7 @@
 #SBATCH --mem-per-cpu=10G
 #SBATCH --time=1-00:00:00
 #SBATCH --job-name="merge bams"
-#SBATCH --output=/rhome/jmarz001/bigdata/CCII_BOZ/scripts/cmd_002_merge.stdout
+#SBATCH --output=/rhome/jmarz001/bigdata/CCII_BOZ/scripts/pipeline/cmd_002_merge.stdout
 #SBATCH -p batch
 #SBATCH --array=1-2
 
