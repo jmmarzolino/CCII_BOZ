@@ -4,7 +4,7 @@
 #SBATCH --mem=50G
 #SBATCH --time=6-00:00:00
 #SBATCH --job-name="recall"
-#SBATCH --output=/rhome/jmarz001/bigdata/CCII_BOZ/scripts/parental_site_recall.stdout
+#SBATCH --output=/rhome/jmarz001/bigdata/CCII_BOZ/scripts/pipeline/cmd_004_parental_site_recall.stdout
 #SBATCH -p koeniglab
 #SBATCH --array=1-5
 

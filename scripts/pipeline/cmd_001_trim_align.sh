@@ -4,7 +4,7 @@
 #SBATCH --mem=20G
 #SBATCH --time=168:00:00
 #SBATCH --job-name='trim+align'
-#SBATCH --output=/rhome/jmarz001/bigdata/CCII_BOZ/scripts/cmd_001_trim_align.stdout
+#SBATCH --output=/rhome/jmarz001/bigdata/CCII_BOZ/scripts/pipeline/cmd_001_trim_align.stdout
 #SBATCH -p koeniglab
 #SBATCH --array=1-4
 

@@ -4,7 +4,7 @@
 #SBATCH --mem=50G
 #SBATCH --time=2-00:00:00
 #SBATCH --job-name="recall"
-#SBATCH --output=/rhome/jmarz001/bigdata/CCII_BOZ/scripts/parental_site_recall_II.stdout
+#SBATCH --output=/rhome/jmarz001/bigdata/CCII_BOZ/scripts/BOZ_II/parental_site_recall_II.stdout
 #SBATCH -p koeniglab
 #SBATCH --array=1-4
 
@@ -35,4 +35,3 @@ python $PROJECT_DIR/scripts/extractsite_counts.py $BAMS/$FILE $SITES_FILE > $RES
 
 #cd ~/bigdata/BARLEY_CCII_POOLSEQ_WGS/DATA/OUTPUT/BAM
 #~/bigdata/BARLEY_CCII_POOLSEQ_WGS/SCRIPTS/001_ALLELE_COUNT.py ~/bigdata/BARLEY_CCII_PARENTS_WGS/DATA/OUTPUT/FINALCALLS/FILTER_SNPSONLY.vcf > ~/bigdata/BARLEY_CCII_POOLSEQ_WGS/DATA/OUTPUT/CALL_VARIANTS/PARENTS.txt
-

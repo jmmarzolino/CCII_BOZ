@@ -3,7 +3,7 @@
 #SBATCH --ntasks=5
 #SBATCH --mem=200G
 #SBATCH --job-name="db"
-#SBATCH --output=/rhome/jmarz001/bigdata/CCII_BOZ/scripts/cmd_005_db.stdout
+#SBATCH --output=/rhome/jmarz001/bigdata/CCII_BOZ/scripts/pipeline/cmd_005_db.stdout
 #SBATCH -p highmem
 #SBATCH --array=1-8
 

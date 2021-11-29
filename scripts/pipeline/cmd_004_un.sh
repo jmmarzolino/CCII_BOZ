@@ -3,7 +3,7 @@
 #SBATCH --nodes=1
 #SBATCH --mem=200G
 #SBATCH --job-name="gvcfUn"
-#SBATCH --output=/rhome/jmarz001/bigdata/CCII_BOZ/scripts/cmd_004_gvcfUn.stdout
+#SBATCH --output=/rhome/jmarz001/bigdata/CCII_BOZ/scripts/pipeline/cmd_004_gvcfUn.stdout
 #SBATCH -p highmem
 #SBATCH --array=1-5
 #SBATCH --time=9-00:00:00

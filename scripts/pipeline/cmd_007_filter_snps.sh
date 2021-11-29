@@ -4,7 +4,7 @@
 #SBATCH --mem-per-cpu=20G
 #SBATCH --time=80:00:00
 #SBATCH --job-name='filt snps'
-#SBATCH --output=/rhome/jmarz001/bigdata/CCII_BOZ/scripts/filt_001.stdout
+#SBATCH --output=/rhome/jmarz001/bigdata/CCII_BOZ/scripts/pipeline/cmd_007_filter_snps.stdout
 #SBATCH -p koeniglab
 #SBATCH --array=1-4
 

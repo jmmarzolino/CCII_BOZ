@@ -4,7 +4,7 @@
 #SBATCH --mem=20G
 #SBATCH --time=74:00:00
 #SBATCH --job-name='trim+align'
-#SBATCH --output=/rhome/jmarz001/bigdata/CCII_BOZ/scripts/cmd_001_trim_align_II.stdout
+#SBATCH --output=/rhome/jmarz001/bigdata/CCII_BOZ/scripts/BOZ_II/cmd_001_trim_align_II.stdout
 #SBATCH -p koeniglab
 #SBATCH --array=1-4
 
@@ -52,4 +52,3 @@ minimap2 -t 10 -ax sr /rhome/jmarz001/shared/GENOMES/BARLEY/2019_Release_Morex_v
 # Convert sam to sorted bam and index bams with csi
 samtools view -b -T $INDEX $BAMS/${sample_name}.sam | samtools sort -@ 20 > $BAMS/${sample_name}.bam
 samtools index -c $BAMS/${sample_name}.bam
-
