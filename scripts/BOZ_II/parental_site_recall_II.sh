@@ -15,7 +15,7 @@ source activate pyenv
 
 # set directories
 PROJECT_DIR=/rhome/jmarz001/bigdata/CCII_BOZ
-SEQS=${PROJECT_DIR}/args/BOZ_II_bams
+SEQS=${PROJECT_DIR}/args/bam_files_II
 BAMS=${PROJECT_DIR}/data/bams
 RESULTS=${PROJECT_DIR}/results
 
