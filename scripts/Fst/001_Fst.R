@@ -4,7 +4,7 @@
 #SBATCH --mem=60G
 #SBATCH --time=10:00:00
 #SBATCH --job-name='Fst'
-#SBATCH --output=/rhome/jmarz001/bigdata/CCII_BOZ/scripts/Fst.stdout
+#SBATCH --output=/rhome/jmarz001/bigdata/CCII_BOZ/scripts/Fst/001_Fst.stdout
 #SBATCH -p koeniglab
 
 setwd("/bigdata/koeniglab/jmarz001/CCII_BOZ/results")

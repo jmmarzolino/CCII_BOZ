@@ -4,7 +4,7 @@
 #SBATCH --mem=50G
 #SBATCH --time=02:00:00
 #SBATCH --job-name='cumulative'
-#SBATCH --output=/rhome/jmarz001/bigdata/CCII_BOZ/scripts/Fst_cumulative.stdout
+#SBATCH --output=/rhome/jmarz001/bigdata/CCII_BOZ/scripts/Fst/002_Fst_cumulative.stdout
 #SBATCH -p short
 
 setwd("/bigdata/koeniglab/jmarz001/CCII_BOZ/results")
