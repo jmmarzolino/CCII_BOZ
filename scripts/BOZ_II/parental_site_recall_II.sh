@@ -15,7 +15,7 @@ source activate pyenv
 
 # set directories
 PROJECT_DIR=/rhome/jmarz001/bigdata/CCII_BOZ
-SEQS=${PROJECT_DIR}/args/bam_files_II
+SEQS=${PROJECT_DIR}/args/merge_bams_II
 BAMS=${PROJECT_DIR}/data/bams
 RESULTS=${PROJECT_DIR}/results
 
@@ -29,7 +29,7 @@ SITES_FILE=${PROJECT_DIR}/args/RECALL_FILT_NAMES.bed
 
 # get filenames from list
 FILE=`head -n ${SLURM_ARRAY_TASK_ID} $SEQS | tail -n1`
-NAME=`basename $FILE | cut -d. -f1`
+NAME=`basename $FILE | cut -d_ -f1`
 
 python $PROJECT_DIR/scripts/extractsite_counts.py $BAMS/$FILE $SITES_FILE > $RESULTS/${NAME}.calls
 
