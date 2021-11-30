@@ -2,7 +2,7 @@
 
 #SBATCH --ntasks=2
 #SBATCH --mem=30G
-#SBATCH --output=/rhome/jmarz001/bigdata/CCII_BOZ/scripts/pipeline/cmd_003_dups1-2.stdout
+#SBATCH --output=/rhome/jmarz001/bigdata/CCII_BOZ/scripts/pipeline/cmd_003_dups.stdout
 #SBATCH --job-name="dups"
 #SBATCH --time=3-00:00:00
 #SBATCH -p koeniglab
