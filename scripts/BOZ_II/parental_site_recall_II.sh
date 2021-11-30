@@ -28,7 +28,7 @@ SITES_FILE=${PROJECT_DIR}/args/RECALL_FILT_NAMES.bed
 
 
 # get filenames from list
-FILE=`head -n ${SLURM_ARRAY_TASK_ID} $SEQS | tail -n1`
+FILE=`head -n ${SLURM_ARRAY_TASK_ID} $SEQS | tail -n1 | cut -f3`
 NAME=`basename $FILE | cut -d_ -f1`
 
 python $PROJECT_DIR/scripts/extractsite_counts.py $BAMS/$FILE $SITES_FILE > $RESULTS/${NAME}.calls
