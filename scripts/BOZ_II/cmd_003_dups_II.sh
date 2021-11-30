@@ -2,7 +2,7 @@
 
 #SBATCH --ntasks=2
 #SBATCH --mem=30G
-#SBATCH --output=/rhome/jmarz001/bigdata/CCII_BOZ/scripts/BOZ_II/cmd_003_dups1-2.stdout
+#SBATCH --output=/rhome/jmarz001/bigdata/CCII_BOZ/scripts/BOZ_II/cmd_003_dups_II.stdout
 #SBATCH --job-name="dups"
 #SBATCH --time=3-00:00:00
 #SBATCH -p koeniglab
@@ -14,11 +14,11 @@ INDEX=/rhome/jmarz001/shared/GENOMES/BARLEY/2019_Release_Morex_vers2/Barley_More
 # set directories
 PROJECT_DIR=/rhome/jmarz001/bigdata/CCII_BOZ
 BAMS=${PROJECT_DIR}/data/bams
-SEQS=${PROJECT_DIR}/args/coverage_bams.txt
+SEQS=${PROJECT_DIR}/args/merge_bams_II
 
 # get filenames from list
 FILE=$(head -n $SLURM_ARRAY_TASK_ID $SEQS | tail -n 1 | cut -f1)
-sample_name=$(head -n ${SLURM_ARRAY_TASK_ID} $SEQS | tail -n 1 | cut -f2)
+sample_name=$(head -n ${SLURM_ARRAY_TASK_ID} $SEQS | tail -n 1 | cut -f3 | cut -d_ -f1)
 
 samtools view -b -T $INDEX $FILE | samtools sort -@ 10 > $BAMS/${sample_name}_sorted.bam
 samtools index -c $BAMS/${sample_name}_sorted.bam
