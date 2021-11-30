@@ -1,0 +1,86 @@
+Loading samtools/1.9
+  Loading requirement: htslib/1.9
+Loading samtools/1.9
+  Loading requirement: htslib/1.9
+[E::hts_open_format] [E::hts_open_format] Failed to open file F27A.bamFailed to open file F50A.bam
+
+samtools view: samtools view: failed to open "F27A.bam" for readingfailed to open "F50A.bam" for reading: No such file or directory
+: No such file or directory
+INFO	2021-11-30 12:21:28	MarkDuplicates	
+
+********** NOTE: Picard's command line syntax is changing.
+**********
+********** For more information, please see:
+********** https://github.com/broadinstitute/picard/wiki/Command-Line-Syntax-Transition-For-Users-(Pre-Transition)
+**********
+********** The command line looks like this in the new syntax:
+**********
+**********    MarkDuplicates -I /rhome/jmarz001/bigdata/CCII_BOZ/data/bams/F27_sorted.bam -O /rhome/jmarz001/bigdata/CCII_BOZ/data/bams/F27.picard_rmdup.bam -M /rhome/jmarz001/bigdata/CCII_BOZ/data/bams/F27.metrics.txt -REMOVE_DUPLICATES true -TMP_DIR /scratch/jmarz/
+**********
+
+
+INFO	2021-11-30 12:21:28	MarkDuplicates	
+
+********** NOTE: Picard's command line syntax is changing.
+**********
+********** For more information, please see:
+********** https://github.com/broadinstitute/picard/wiki/Command-Line-Syntax-Transition-For-Users-(Pre-Transition)
+**********
+********** The command line looks like this in the new syntax:
+**********
+**********    MarkDuplicates -I /rhome/jmarz001/bigdata/CCII_BOZ/data/bams/F50_sorted.bam -O /rhome/jmarz001/bigdata/CCII_BOZ/data/bams/F50.picard_rmdup.bam -M /rhome/jmarz001/bigdata/CCII_BOZ/data/bams/F50.metrics.txt -REMOVE_DUPLICATES true -TMP_DIR /scratch/jmarz/
+**********
+
+
+12:21:29.462 INFO  NativeLibraryLoader - Loading libgkl_compression.so from jar:file:/rhome/jmarz001/picard/build/libs/picard-2.21.3-SNAPSHOT-all.jar!/com/intel/gkl/native/libgkl_compression.so
+12:21:29.473 INFO  NativeLibraryLoader - Loading libgkl_compression.so from jar:file:/rhome/jmarz001/picard/build/libs/picard-2.21.3-SNAPSHOT-all.jar!/com/intel/gkl/native/libgkl_compression.so
+[Tue Nov 30 12:21:29 PST 2021] MarkDuplicates INPUT=[/rhome/jmarz001/bigdata/CCII_BOZ/data/bams/F50_sorted.bam] OUTPUT=/rhome/jmarz001/bigdata/CCII_BOZ/data/bams/F50.picard_rmdup.bam METRICS_FILE=/rhome/jmarz001/bigdata/CCII_BOZ/data/bams/F50.metrics.txt REMOVE_DUPLICATES=true TMP_DIR=[/scratch/jmarz]    MAX_SEQUENCES_FOR_DISK_READ_ENDS_MAP=50000 MAX_FILE_HANDLES_FOR_READ_ENDS_MAP=8000 SORTING_COLLECTION_SIZE_RATIO=0.25 TAG_DUPLICATE_SET_MEMBERS=false REMOVE_SEQUENCING_DUPLICATES=false TAGGING_POLICY=DontTag CLEAR_DT=true DUPLEX_UMI=false ADD_PG_TAG_TO_READS=true ASSUME_SORTED=false DUPLICATE_SCORING_STRATEGY=SUM_OF_BASE_QUALITIES PROGRAM_RECORD_ID=MarkDuplicates PROGRAM_GROUP_NAME=MarkDuplicates READ_NAME_REGEX=<optimized capture of last three ':' separated fields as numeric values> OPTICAL_DUPLICATE_PIXEL_DISTANCE=100 MAX_OPTICAL_DUPLICATE_SET_SIZE=300000 VERBOSITY=INFO QUIET=false VALIDATION_STRINGENCY=STRICT COMPRESSION_LEVEL=5 MAX_RECORDS_IN_RAM=500000 CREATE_INDEX=false CREATE_MD5_FILE=false GA4GH_CLIENT_SECRETS=client_secrets.json USE_JDK_DEFLATER=false USE_JDK_INFLATER=false
+[Tue Nov 30 12:21:29 PST 2021] MarkDuplicates INPUT=[/rhome/jmarz001/bigdata/CCII_BOZ/data/bams/F27_sorted.bam] OUTPUT=/rhome/jmarz001/bigdata/CCII_BOZ/data/bams/F27.picard_rmdup.bam METRICS_FILE=/rhome/jmarz001/bigdata/CCII_BOZ/data/bams/F27.metrics.txt REMOVE_DUPLICATES=true TMP_DIR=[/scratch/jmarz]    MAX_SEQUENCES_FOR_DISK_READ_ENDS_MAP=50000 MAX_FILE_HANDLES_FOR_READ_ENDS_MAP=8000 SORTING_COLLECTION_SIZE_RATIO=0.25 TAG_DUPLICATE_SET_MEMBERS=false REMOVE_SEQUENCING_DUPLICATES=false TAGGING_POLICY=DontTag CLEAR_DT=true DUPLEX_UMI=false ADD_PG_TAG_TO_READS=true ASSUME_SORTED=false DUPLICATE_SCORING_STRATEGY=SUM_OF_BASE_QUALITIES PROGRAM_RECORD_ID=MarkDuplicates PROGRAM_GROUP_NAME=MarkDuplicates READ_NAME_REGEX=<optimized capture of last three ':' separated fields as numeric values> OPTICAL_DUPLICATE_PIXEL_DISTANCE=100 MAX_OPTICAL_DUPLICATE_SET_SIZE=300000 VERBOSITY=INFO QUIET=false VALIDATION_STRINGENCY=STRICT COMPRESSION_LEVEL=5 MAX_RECORDS_IN_RAM=500000 CREATE_INDEX=false CREATE_MD5_FILE=false GA4GH_CLIENT_SECRETS=client_secrets.json USE_JDK_DEFLATER=false USE_JDK_INFLATER=false
+[Tue Nov 30 12:21:29 PST 2021] Executing as jmarz001@i10 on Linux 3.10.0-1160.15.2.el7.x86_64 amd64; Java HotSpot(TM) 64-Bit Server VM 1.8.0_45-b14; Deflater: Intel; Inflater: Intel; Provider GCS is not available; Picard version: 2.21.3-SNAPSHOT
+[Tue Nov 30 12:21:29 PST 2021] Executing as jmarz001@i10 on Linux 3.10.0-1160.15.2.el7.x86_64 amd64; Java HotSpot(TM) 64-Bit Server VM 1.8.0_45-b14; Deflater: Intel; Inflater: Intel; Provider GCS is not available; Picard version: 2.21.3-SNAPSHOT
+INFO	2021-11-30 12:21:30	MarkDuplicates	Start of doWork freeMemory: 2037539536; totalMemory: 2058354688; maxMemory: 5726797824
+INFO	2021-11-30 12:21:30	MarkDuplicates	Reading input file and constructing read end information.
+INFO	2021-11-30 12:21:30	MarkDuplicates	Will retain up to 20749267 data points before spilling to disk.
+INFO	2021-11-30 12:21:30	MarkDuplicates	Start of doWork freeMemory: 2037539536; totalMemory: 2058354688; maxMemory: 5726797824
+INFO	2021-11-30 12:21:30	MarkDuplicates	Reading input file and constructing read end information.
+INFO	2021-11-30 12:21:30	MarkDuplicates	Will retain up to 20749267 data points before spilling to disk.
+INFO	2021-11-30 12:21:30	MarkDuplicates	Read 0 records. 0 pairs never matched.
+INFO	2021-11-30 12:21:30	MarkDuplicates	Read 0 records. 0 pairs never matched.
+INFO	2021-11-30 12:21:32	MarkDuplicates	After buildSortedReadEndLists freeMemory: 1877488920; totalMemory: 2058354688; maxMemory: 5726797824
+INFO	2021-11-30 12:21:32	MarkDuplicates	Will retain up to 178962432 duplicate indices before spilling to disk.
+INFO	2021-11-30 12:21:33	MarkDuplicates	After buildSortedReadEndLists freeMemory: 1877488920; totalMemory: 2058354688; maxMemory: 5726797824
+INFO	2021-11-30 12:21:33	MarkDuplicates	Will retain up to 178962432 duplicate indices before spilling to disk.
+INFO	2021-11-30 12:21:33	MarkDuplicates	Traversing read pair information and detecting duplicates.
+INFO	2021-11-30 12:21:33	MarkDuplicates	Traversing fragment information and detecting duplicates.
+INFO	2021-11-30 12:21:33	MarkDuplicates	Sorting list of duplicate records.
+INFO	2021-11-30 12:21:33	MarkDuplicates	Traversing read pair information and detecting duplicates.
+INFO	2021-11-30 12:21:33	MarkDuplicates	Traversing fragment information and detecting duplicates.
+INFO	2021-11-30 12:21:33	MarkDuplicates	Sorting list of duplicate records.
+INFO	2021-11-30 12:21:34	MarkDuplicates	After generateDuplicateIndexes freeMemory: 2044151928; totalMemory: 3490185216; maxMemory: 5726797824
+INFO	2021-11-30 12:21:34	MarkDuplicates	Marking 0 records as duplicates.
+INFO	2021-11-30 12:21:34	MarkDuplicates	Found 0 optical duplicate clusters.
+INFO	2021-11-30 12:21:34	MarkDuplicates	Reads are assumed to be ordered by: coordinate
+INFO	2021-11-30 12:21:34	MarkDuplicates	Writing complete. Closing input iterator.
+INFO	2021-11-30 12:21:34	MarkDuplicates	Duplicate Index cleanup.
+INFO	2021-11-30 12:21:34	MarkDuplicates	Getting Memory Stats.
+INFO	2021-11-30 12:21:34	MarkDuplicates	After generateDuplicateIndexes freeMemory: 2044151544; totalMemory: 3490185216; maxMemory: 5726797824
+INFO	2021-11-30 12:21:34	MarkDuplicates	Marking 0 records as duplicates.
+INFO	2021-11-30 12:21:34	MarkDuplicates	Found 0 optical duplicate clusters.
+INFO	2021-11-30 12:21:34	MarkDuplicates	Reads are assumed to be ordered by: coordinate
+INFO	2021-11-30 12:21:34	MarkDuplicates	Writing complete. Closing input iterator.
+INFO	2021-11-30 12:21:34	MarkDuplicates	Duplicate Index cleanup.
+INFO	2021-11-30 12:21:34	MarkDuplicates	Getting Memory Stats.
+INFO	2021-11-30 12:21:34	MarkDuplicates	Before output close freeMemory: 3475437696; totalMemory: 3490185216; maxMemory: 5726797824
+INFO	2021-11-30 12:21:34	MarkDuplicates	Closed outputs. Getting more Memory Stats.
+INFO	2021-11-30 12:21:34	MarkDuplicates	After output close freeMemory: 3475507296; totalMemory: 3490185216; maxMemory: 5726797824
+[Tue Nov 30 12:21:34 PST 2021] picard.sam.markduplicates.MarkDuplicates done. Elapsed time: 0.09 minutes.
+Runtime.totalMemory()=3490185216
+rmdir: invalid option -- 'r'
+Try 'rmdir --help' for more information.
+INFO	2021-11-30 12:21:35	MarkDuplicates	Before output close freeMemory: 3475437696; totalMemory: 3490185216; maxMemory: 5726797824
+INFO	2021-11-30 12:21:35	MarkDuplicates	Closed outputs. Getting more Memory Stats.
+INFO	2021-11-30 12:21:35	MarkDuplicates	After output close freeMemory: 3475507296; totalMemory: 3490185216; maxMemory: 5726797824
+[Tue Nov 30 12:21:35 PST 2021] picard.sam.markduplicates.MarkDuplicates done. Elapsed time: 0.10 minutes.
+Runtime.totalMemory()=3490185216
+rmdir: invalid option -- 'r'
+Try 'rmdir --help' for more information.
