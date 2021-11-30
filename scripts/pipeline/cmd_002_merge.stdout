@@ -1,0 +1,6 @@
+Loading samtools/1.9
+  Loading requirement: htslib/1.9
+Loading samtools/1.9
+  Loading requirement: htslib/1.9
+[bam_merge] File '255_merged.bam' exists. Please apply '-f' to overwrite. Abort.
+[bam_merge] File '250_merged.bam' exists. Please apply '-f' to overwrite. Abort.
