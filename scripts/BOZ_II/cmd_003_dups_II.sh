@@ -23,6 +23,6 @@ sample_name=$(head -n ${SLURM_ARRAY_TASK_ID} $SEQS | tail -n 1 | cut -f2)
 samtools view -b -T $INDEX $FILE | samtools sort -@ 10 > $BAMS/${sample_name}_sorted.bam
 samtools index -c $BAMS/${sample_name}_sorted.bam
 
-mkdir -pv /scratch/jmarz/picard/
-java -Xmx6g -jar /rhome/jmarz001/picard/build/libs/picard-2.21.3-SNAPSHOT-all.jar MarkDuplicates I=$BAMS/${sample_name}_sorted.bam O=$BAMS/${sample_name}.picard_rmdup.bam M=$BAMS/${sample_name}.metrics.txt REMOVE_DUPLICATES=true TMP_DIR=/scratch/jmarz/picard/
-rmdir -r /scratch/jmarz/picard/
+mkdir -pv /scratch/jmarz/
+java -Xmx6g -jar /rhome/jmarz001/picard/build/libs/picard-2.21.3-SNAPSHOT-all.jar MarkDuplicates I=$BAMS/${sample_name}_sorted.bam O=$BAMS/${sample_name}.picard_rmdup.bam M=$BAMS/${sample_name}.metrics.txt REMOVE_DUPLICATES=true TMP_DIR=/scratch/jmarz/
+rmdir -r /scratch/jmarz/
