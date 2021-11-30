@@ -2,11 +2,11 @@
 
 #SBATCH --ntasks=1
 #SBATCH --mem=50G
-#SBATCH --time=2-00:00:00
+#SBATCH --time=4-00:00:00
 #SBATCH --job-name="recall"
 #SBATCH --output=/rhome/jmarz001/bigdata/CCII_BOZ/scripts/BOZ_II/parental_site_recall_II.stdout
 #SBATCH -p koeniglab
-#SBATCH --array=1-4
+#SBATCH --array=1-2
 
 # load modules
 module load bcftools/1.9
