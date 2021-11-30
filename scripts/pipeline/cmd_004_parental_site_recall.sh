@@ -24,7 +24,7 @@ RESULTS=${PROJECT_DIR}/results
 
 # now use those sites to extract allele frequencies in the progeny
 # refer to .bed file containing sites
-SITES_FILE=/rhome/dkoenig/bigdata/BARLEY_CCII_POOLSEQ_WGS/DATA/INPUT/RECALL_FILT_NAMES.bed
+SITES_FILE=${PROJECT_DIR}/args/RECALL_FILT_NAMES.bed
 
 # get filenames from list
 FILE=`head -n ${SLURM_ARRAY_TASK_ID} $SEQS | tail -n1 | cut -f1`
